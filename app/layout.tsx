@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import {NextUIProvider} from "@nextui-org/react";
+import { NextUIProvider } from "@nextui-org/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,9 +17,44 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-        <body className={inter.className}>
-            {children}
-        </body>
+      <body className={inter.className}>
+        <div className="HStack w-full items-center justify-center">
+          <header className="w-full HStack items-center justify-between p-5">
+            <div className="HStack gap-5 text-sm items-center">
+              <div className="HStack gap-2">
+                <p className="font-semibold text-lg">Developer.FacePass</p>
+              </div>
+              <p>Home</p>
+              <p>Plugin</p>
+              <p>Pricing</p>
+            </div>
+            <div className="HStack gap-5">
+              <button className="bg-white pl-5 pr-5 pt-1 pb-1 rounded-md">
+                Sign In
+              </button>
+              <div className="HStack items-center text-sm">
+                <p>EN</p>
+
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  className="w-4 h-4"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                  />
+                </svg>
+              </div>
+            </div>
+          </header>
+        </div>
+        {children}
+      </body>
     </html>
   );
 }
