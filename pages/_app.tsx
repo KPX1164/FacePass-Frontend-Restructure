@@ -4,7 +4,8 @@ import '@/styles/globals.css'
 // import '@/styles/navbar.css'
 import { NextPageWithLayout } from '@/utils/types';
 import {BreakpointProvider} from 'react-socks'
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
 
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
