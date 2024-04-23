@@ -11,7 +11,7 @@ export default function App() {
 
   const router = useRouter();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e:any) => {
     e.preventDefault();
     if (!emailEntered && email !== "") {
       setEmailEntered(true);
@@ -63,7 +63,7 @@ export default function App() {
           {emailEntered && (
             <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
               <Input
-                type="text"
+                type="password"
                 label="Passcode"
                 value={passcode}
                 onChange={(e) => setPasscode(e.target.value)}
