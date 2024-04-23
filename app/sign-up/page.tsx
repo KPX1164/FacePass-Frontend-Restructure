@@ -1,13 +1,7 @@
-"use client";
+'use client';
 import React, { useState } from "react";
 import axios from "axios";
-import {
-  Input,
-  Button,
-  RadioGroup,
-  Radio,
-  DatePicker,
-} from "@nextui-org/react";
+import { Input, Button, RadioGroup, Radio, DatePicker } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import moment from "moment";
 
@@ -21,7 +15,6 @@ export default function App() {
   const [gender, setGender] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
   const router = useRouter(); // Initialize useRouter
   const formatDate = (date: any) => {
@@ -31,13 +24,12 @@ export default function App() {
   const signUp = async () => {
     try {
       const response = await axios.post("http://127.0.0.1:5000/auth/register", {
-        first_name: firstName, // Use first_name instead of firstName
-        last_name: lastName, // Similarly for other fields
+        first_name: firstName,
+        last_name: lastName,
         date_of_birth: formattedBirthDate,
         gender,
         phone_number: phoneNumber,
         email,
-        password,
       });
 
       console.log("Registration successful!", response.data);
@@ -52,15 +44,6 @@ export default function App() {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     signUp();
-
-    // Log form data
-    console.log("First Name:", firstName);
-    console.log("Last Name:", lastName);
-    console.log("Birth Date:", formattedBirthDate);
-    console.log("Gender:", gender);
-    console.log("Phone Number:", phoneNumber);
-    console.log("Email:", email);
-    console.log("Password:", password);
   };
 
   return (
@@ -69,7 +52,7 @@ export default function App() {
         <p className="font-semibold text-3xl">
           Create Your FacePass Developer Account
         </p>
-        <p>One Apple ID is all you need to access all Apple services.</p>
+        <p>One FacePass account is all you need to access all services.</p>
         <form onSubmit={handleSubmit} className="VStack gap-5">
           <div className="HStack gap-5">
             <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
@@ -127,24 +110,13 @@ export default function App() {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-            <Input
-              type="password"
-              label="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
           <div className="section-break"></div>
           <div className="w-full">
             <p className="text-xs text-center">
               <span className="opacity-75">
                 Your FacePass account information is used to allow you to sign
                 in securely and access your data. <br /> FacePass records
-                certain data for security, support and reporting purposes.
-              </span>
-              <span className="text-blue-600">
-                See how your data is managed.
+                certain data for security, support, and reporting purposes.
               </span>
             </p>
           </div>
