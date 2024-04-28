@@ -37,26 +37,36 @@ function useToken() {
     return null;
   }
 
+  const getRole = () => {
+    if (typeof window !== 'undefined') {
+      const tokenString = localStorage.getItem('token');
+      const userToken = JSON.parse(tokenString);
+      return userToken?.user.Role;
+    }
+    return null;
+  }
+
   const [token, setToken] = useState(getToken());
   const [username, setUsername] = useState(getUsername());
   const [userId, setUserId] = useState(getID());
-  const [bookMark, setBookmarks] = useState([]);
+  const [bookmarks, setBookmarks] = useState(getBookmarks());
+  const [role, setRole] = useState(getRole());
 
   const saveToken = (userToken) => {
     localStorage.setItem('token', JSON.stringify(userToken));
-    setBookmarks(userToken.bookmarks);
-    setUserId(userToken.id);
+    setBookmarks(userToken.user.bookmarks);
+    setUserId(userToken.user.id);
     setToken(userToken.token);
-    setUsername(userToken.username);
+    setUsername(userToken.user.username);
+    setRole(userToken.user.role); // Store the user's role
   };
 
   const logout = () => {
     localStorage.removeItem('token');
     setToken(null);
     setUsername(null);
+    setRole(null);
   };
-  
- 
 
   return {
     setToken: saveToken,
@@ -64,7 +74,9 @@ function useToken() {
     isLoggedIn: !!token,
     logout,
     username,
-    userId
+    userId,
+    bookmarks,
+    role // Include the user's role in the return object
   };
 }
 
