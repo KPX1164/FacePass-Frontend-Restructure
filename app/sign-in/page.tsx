@@ -8,6 +8,8 @@ export default function App() {
   const [email, setEmail] = useState("");
   const [passcode, setPasscode] = useState("");
   const [emailEntered, setEmailEntered] = useState(false);
+  const [token, setToken] = useState(null); // State to store the token
+  const [role, setRole] = useState(null); // State to store the user role
 
   const router = useRouter();
 
@@ -39,11 +41,18 @@ export default function App() {
         passcode,
       });
       console.log("Login successful!", response.data);
+      const { token, role } = response.data; // Assuming the response contains token and role
+      setToken(token);
+      setRole(role);
+      // Save token and role in local storage
+      localStorage.setItem("token", token);
+      localStorage.setItem("role", role);
       router.push("/"); // Redirect to homepage after successful login
     } catch (error) {
       console.error("Login error:", error);
     }
   };
+
 
   return (
     <main className="VStack min-h-screen items-center">
