@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import axios from "axios";
-import { Input, Button,Checkbox } from "@nextui-org/react";
+import { Input, Button, Checkbox } from "@nextui-org/react";
 
 export default function Home() {
   const router = useRouter();
@@ -57,23 +57,20 @@ export default function Home() {
       setRole(role);
       localStorage.setItem("token", token);
       localStorage.setItem("role", role);
-      
-      if (role === "DEVELOPER") {
-        router.push("/developer"); // Redirect to developer page if the user is a developer
-      } else {
-        setIsDeveloper(true); // Update isDeveloper state to true
+
+      if (role === "developer") {
+        setIsDeveloper(true);
+        router.push("/developer");
       }
     } catch (error) {
       console.error("Login error:", error);
     }
   };
-  
-  
 
   return (
     <main className="flex h-screen flex-col items-center justify-center">
       <div className="VStack gap-5 items-center -mt-44">
-        {!isDeveloper ? (
+        {role === null && (
           <div>
             <p className="font-semibold text-3xl">Sign in to FacePass Developer</p>
             <p>One FacePass account is all you need to access all services.</p>
@@ -124,11 +121,13 @@ export default function Home() {
               </form>
             </div>
           </div>
-        ) : (
+        )}
+        {/* Conditional rendering based on the user's role */}
+        {role === "user" && (
           <div>
-          <p>You are not a developer yet</p>
-          <p>You must pay for developer account $99/year.</p>
-          <Checkbox defaultSelected>I have reaf term and services</Checkbox>
+            <p>You are not a developer yet</p>
+            <p>You must pay for a developer account $99/year.</p>
+            <Checkbox >I have read terms and services</Checkbox>
           </div>
         )}
       </div>
