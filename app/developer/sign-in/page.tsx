@@ -13,6 +13,52 @@ export default function Home() {
   const [token, setToken] = useState(null);
   const [role, setRole] = useState(null);
   const [isDeveloper, setIsDeveloper] = useState(false);
+  const [checked, setChecked] = useState(false);
+
+  const handleCheckboxChange = () => {
+    setChecked(!checked);
+  };
+
+  const handleSignInAsDeveloper = async () => {
+    if (checked) {
+      try {
+        const response = await axios.post(
+          "http://127.0.0.1:5000/auth/update_role",
+          {
+            email,
+            role: "dev",
+          }
+        );
+        console.log("Role updated to 'dev'", response.data);
+        router.push("/developer");
+
+        // Perform redirect or other actions upon successful role update
+      } catch (error) {
+        console.error("Error updating role:", error);
+      }
+    } else {
+      alert("Please check the checkbox to sign in as a developer.");
+    }
+  };
+
+  const handleCancel = async () => {
+    try {
+      // Update user's role to 'dev' in the backend
+      const response = await axios.post(
+        "http://127.0.0.1:5000/auth/update_role",
+        {
+          email,
+          role: "dev",
+        }
+      );
+      console.log("Role updated to 'dev'", response.data);
+
+      // Redirect to "/developer/sign-in"
+      router.push("/developer/sign-in");
+    } catch (error) {
+      console.error("Cancel error:", error);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -72,7 +118,9 @@ export default function Home() {
       <div className="VStack gap-5 items-center -mt-44">
         {role === null && (
           <div>
-            <p className="font-semibold text-3xl">Sign in to FacePass Developer</p>
+            <p className="font-semibold text-3xl">
+              Sign in to FacePass Developer
+            </p>
             <p>One FacePass account is all you need to access all services.</p>
             <div className="w-full">
               <form onSubmit={handleSubmit} className="VStack gap-5">
@@ -125,9 +173,19 @@ export default function Home() {
         {/* Conditional rendering based on the user's role */}
         {role === "user" && (
           <div>
-            <p>You are not a developer yet</p>
-            <p>You must pay for a developer account $99/year.</p>
-            <Checkbox >I have read terms and services</Checkbox>
+            <form onSubmit={handleSubmit} className="VStack gap-5">
+              <p>You are not a developer yet</p>
+              <p>You must pay for a developer account $99/year.</p>
+              <Checkbox checked={checked} onChange={handleCheckboxChange}>
+                I have read terms and services
+              </Checkbox>{" "}
+              <Button color="primary" onClick={handleSignInAsDeveloper}>
+                Sign In as Developer
+              </Button>
+              <Button color="primary" variant="light" onClick={handleCancel}>
+                Cancel
+              </Button>
+            </form>
           </div>
         )}
       </div>
