@@ -56,9 +56,11 @@ export default function App() {
 
   return (
     <main className="VStack min-h-screen items-center">
-      <div className="VStack gap-5 items-center pt-24">
+      <div className="VStack gap-5 items-center pt-24 ">
         <p className="font-semibold text-3xl">FacePass Developer Account</p>
         <p>Manage your FacePass account</p>
+        <div className="w-full">
+
         <form onSubmit={handleSubmit} className="VStack gap-5">
           <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
             <Input
@@ -103,6 +105,7 @@ export default function App() {
             {emailEntered ? "Sign In" : "Continue"}
           </Button>
         </form>
+        </div>
       </div>
     </main>
   );

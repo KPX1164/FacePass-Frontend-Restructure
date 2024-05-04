@@ -100,7 +100,7 @@ export default function App() {
               onChange={(e) => setPhoneNumber(e.target.value)}
             />
           </div>
-          <div className="section-break"></div>
+          <div className="HSection-break"></div>
           <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
             <Input
               type="email"
@@ -110,7 +110,7 @@ export default function App() {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div className="section-break"></div>
+          <div className="Hsection-break"></div>
           <div className="w-full">
             <p className="text-xs text-center">
               <span className="opacity-75">

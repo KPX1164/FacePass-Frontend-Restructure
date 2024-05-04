@@ -1,23 +1,20 @@
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { GoSun, GoMoon } from "react-icons/go";
-
-
 export default function Navigation() {
   const router = useRouter();
   const [activePage, setActivePage] = useState("/");
   const [isDay, setIsDay] = useState(true);
-
+  
   useEffect(() => {
     setActivePage(window.location.pathname);
   }, []);
 
   const toggleDayNight = () => {
-
     setIsDay(!isDay);
     console.log(isDay);
-
   };
+  
 
   return (
     <div className="HStack w-full items-center justify-center pl-7 pr-7">
@@ -33,7 +30,7 @@ export default function Navigation() {
             FacePass
           </p>
 
-          <span className=" opacity-25">|</span>
+          <div className="VSection-break"></div>
           <div className="HStack items-center justify-center gap-14 rounded-full w-fit pt-2 pb-2 pl-5 pr-5 ">
             <p
               className={`opacity-${
@@ -72,17 +69,29 @@ export default function Navigation() {
         </div>
 
         <div className="HStack   items-center gap-10 justify-end">
-          <button onClick={toggleDayNight} className="Control ignore">
+          <button onClick={toggleDayNight} className="Control-ignore">
             {isDay ? <GoSun /> : <GoMoon />}
           </button>
-<div className="gap-3 HStack items-center justify-center"><button onClick={() => router.push("/sign-in")} >
-            Sign In
-          </button>
-          <span className="opacity-25">|</span>
-          <button onClick={() => router.push("/sign-up")} className="Control dark:bg-white/20 dark:bg-opacity-5">
-            Sign Up
-          </button></div>
-          
+          <div className="VSection-break"></div>
+
+          <div className="gap-10 HStack items-center justify-center">
+          {token ? (
+              <>
+                <p>Welcome, {username}!</p>
+                <button onClick={logout}>Logout</button>
+              </>
+            ) : (
+              <>
+                <button onClick={() => router.push("/sign-in")}>Sign In</button>
+                <button
+                  onClick={() => router.push("/sign-up")}
+                  className="Control dark:bg-white/20 dark:bg-opacity-5"
+                >
+                  Sign Up
+                </button>
+              </>
+            )}
+          </div>
         </div>
       </header>
     </div>
