@@ -22,7 +22,7 @@ export default function Home() {
         </p>
         <button
           onClick={() => router.push("/sign-in")}
-          className="text-white min-w-60 bg-black rounded-full pl-7 pr-7 pt-3 pb-3  border-opacity-75"
+          className="text-white dark:text-black min-w-60 bg-black dark:bg-white rounded-full pl-7 pr-7 pt-3 pb-3  border-opacity-75"
         >
           Try now
         </button>

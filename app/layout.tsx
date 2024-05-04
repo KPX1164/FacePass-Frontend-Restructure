@@ -32,12 +32,20 @@ export default function RootLayout({
             height: 100%;
             overflow: hidden;
 
-            background-opacity: 0.2;
+            background-color: #ffffff;
+            opacity: 0.8;
             background-image: radial-gradient(
-              #b9b9b9 0.9500000000000001px,
-              rgba(255, 255, 255, 1) 0.9500000000000001px
+              #b9b9b9 1.7000000000000002px,
+              rgba(255, 255, 255, 1) 1.7000000000000002px
             );
-            background-size: 19px 19px;
+            background-size: 34px 34px;
+
+            // background-opacity: 0.2;
+            // background-image: radial-gradient(
+            //   #b9b9b9 1.7000000000000002px,
+            //   rgba(255, 255, 255, 1) 1.7000000000000002px
+            // );
+            // background-size: 19px 19px;
           }
 
           @keyframes slide {
@@ -55,34 +63,18 @@ export default function RootLayout({
             left: 0;
             width: 100%;
             height: 100%;
-            overflow-y: auto; /* Allow vertical scrolling for content */
+            overflow-y: auto; 
           }
- 
+
           /* Dark mode */
           @media (prefers-color-scheme: dark) {
             .background-container {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                overflow: hidden;
-        
-                /* Adjust the background color for dark mode */
-                background-color: #121212; 
-        
-                /* Adjust the opacity for dark mode */
-                background-opacity: 0.8;
-        
-                /* Adjust the radial gradient colors for dark mode */
-                background-image: radial-gradient(
-                    rgba(38, 38, 38, 0.80) 0.9500000000000001px,
-                    rgba(0, 0, 0, 0) 0.9500000000000001px
-                );
-                background-size: 19px 19px;
+              background-image: radial-gradient(
+                rgba(38, 38, 38, 0.8) 1.7000000000000002px,
+                rgba(0, 0, 0, 1) 1.7000000000000002px
+              );
             }
-        }
-        
+          }
         `}</style>
       </head>
       <body className={inter.className + " dark:dark"}>
