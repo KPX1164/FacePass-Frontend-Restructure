@@ -35,7 +35,7 @@ export default function RootLayout({
             background-opacity: 0.2;
             background-image: radial-gradient(
               #b9b9b9 0.9500000000000001px,
-              rgba(255, 255, 255, 0) 0.9500000000000001px
+              rgba(255, 255, 255, 1) 0.9500000000000001px
             );
             background-size: 19px 19px;
           }

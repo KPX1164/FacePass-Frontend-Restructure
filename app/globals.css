@@ -48,16 +48,83 @@ body {
   background-color: rgba(0, 0, 0, 0.25);
 }
 
-.Controls {
+.Vertical-Section-Break {
+  min-width: 0.05rem;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+.Controler {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 96px;
+  border-radius: 9999px; /* or use a large value for equivalent of rounded-full */
+  background-color: rgba(255, 255, 255, 0.2); /* for dark mode */
+  background-color: rgba(0, 0, 0, 0.05); /* for light mode */
+  /* border: 1px solid rgba(0, 0, 0, 0.05); */
   width: fit-content;
-  height: fit-content;
-  padding: 0px 20px;
- background-color: rgba(0, 0, 0, 1);
+  padding-top: 8px; /* equivalent of pt-2 */
+  padding-bottom: 8px; /* equivalent of pb-2 */
+  padding-left: 20px; /* equivalent of pl-5 */
+  padding-right: 20px; /* equivalent of pr-5 */
+  cursor: pointer;
 }
 
 
 
 
-/* ===================== ADDITIONAL STYLES ===================== */
 
+/* ===================== ADDITIONAL STYLES ===================== */
+.Control {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 25px;
+  padding-top: 0.5;
+  padding-bottom: 0.5;
+  padding-right: 1.25rem;
+
+  padding-left: 1.25rem;
+  border-radius: 500px;
+  /* background-color: #5e5e5e2e, #ffffff0f; */
+  background-color: rgba(255, 255, 255, 0.2); /* for dark mode */
+  background-color: rgba(0, 0, 0, 0.05); /* for light mode */
+  padding-top: 8px; /* equivalent of pt-2 */
+  padding-bottom: 8px; /* equivalent of pb-2 */
+  padding-left: 20px; /* equivalent of pl-5 */
+  padding-right: 20px; /* equivalent of pr-5 */
+  overflow: hidden;
+  min-width: 140px;
+  justify-content: center;
+
+}
+.Label {
+  color: rgba(0, 0, 0, 1);
+
+  font-family: SF Pro, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+ 
+}
+
+.Control:hover {
+ 
+  background-color: #5e5e5e2e, #ffffff0f;
+  background-image: radial-gradient(
+      ellipse 101.0012375687634px 52.562355980862556px at 50.49999841188234px 52.00000201892618px,
+      #5e5e5e24 0%,
+      #5e5e5e00 74%
+    ),
+    radial-gradient(
+      ellipse 101.00124342267529px 52.009064872197946px at 50.499996005556575px 52.0000045143173px,
+      #ffffff12 0%,
+      #fff0 56%
+    );
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto, auto;
+  overflow: hidden;
+}
+
+@media (prefers-color-scheme: dark) {
+}
 /* Tailwind Styles */

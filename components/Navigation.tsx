@@ -1,42 +1,69 @@
 import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+
 export default function Navigation() {
   const router = useRouter();
+  const [activePage, setActivePage] = useState("/");
+
+  useEffect(() => {
+    setActivePage(window.location.pathname);
+  }, []);
 
   return (
     <div className="HStack w-full items-center justify-center pl-7 pr-7">
-      <header className="w-full HStack items-center justify-between p-5">
-        <div className="HStack w-1/3 gap-5 text-sm items-center justify-start">
-          <div
-            className="HStack gap-2 cursor-pointer"
-            onClick={() => router.push("/")}
+      <header className="z-40 w-full HStack items-center justify-between p-5">
+        <div className="HStack gap-5 text-sm items-center justify-start">
+          <p
+            className="opacity-100 font-semibold text-2xl hover:opacity-100 cursor-pointer"
+            onClick={() => {
+              router.push("/");
+              setActivePage("/");
+            }}
           >
-            <p className="font-semibold text-lg">FacePass</p>
+            FacePass
+          </p>
+
+          <span className=" opacity-25">|</span>
+          <div className="HStack items-center justify-center gap-14 rounded-full w-fit pt-2 pb-2 pl-5 pr-5 ">
+            <p
+              className={`opacity-${
+                activePage === "/" ? "100" : "45"
+              } hover:opacity-100 cursor-pointer`}
+              onClick={() => {
+                router.push("/");
+                setActivePage("/");
+              }}
+            >
+              Home
+            </p>
+            <p
+              className={`opacity-${
+                activePage === "/plugin" ? "100" : "45"
+              } hover:opacity-100  cursor-pointer`}
+              onClick={() => {
+                router.push("/plugin");
+                setActivePage("/plugin");
+              }}
+            >
+              How to use
+            </p>
+            <p
+              className={`opacity-${
+                activePage === "/pricing" ? "100" : "45"
+              } hover:opacity-100  cursor-pointer`}
+              onClick={() => {
+                router.push("/pricing");
+                setActivePage("/pricing");
+              }}
+            >
+              Support
+            </p>
           </div>
         </div>
-        <div className="HStack items-center justify-center gap-24 rounded-full dark:bg-white/20 bg-black/5 ring-1 ring-black/5 w-fit pt-2 pb-2 pl-5 pr-5 cursor-pointer">
 
-          <p
-            className=" opacity-45 hover:opacity-100 cursor-pointer"
-            onClick={() => router.push("/")}
-          >
-            Home
-          </p>
-          <p
-            className=" opacity-45 hover:opacity-100  cursor-pointer"
-            onClick={() => router.push("/plugin")}
-          >
-            How to use
-          </p>
-          <p
-            className=" opacity-45 hover:opacity-100  cursor-pointer"
-            onClick={() => router.push("/pricing")}
-          >
-            Support
-          </p>
-        </div>
-        <div className="HStack w-1/3 items-center gap-5 justify-end">
-          <button onClick={() => router.push("/sign-in")} className="HStack items-center justify-center gap-2 rounded-full dark:bg-white/20 bg-black/5 ring-1 ring-black/5 min-w-40 w-fit pt-2 pb-2 pl-5 pr-5">
-            Sign In
+        <div className="HStack   items-center gap-5 justify-end">
+          <button onClick={() => router.push("/sign-in")} className="Control">
+            <p className="Label"> Sign In</p>
           </button>
         </div>
       </header>
