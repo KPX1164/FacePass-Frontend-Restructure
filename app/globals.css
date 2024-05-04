@@ -32,8 +32,8 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-    width: auto;
-    height: 1000px;
+  width: auto;
+  height: 1000px;
 }
 
 @layer utilities {
@@ -47,3 +47,17 @@ body {
   height: 0.05rem;
   background-color: rgba(0, 0, 0, 0.25);
 }
+
+.Controls {
+  width: fit-content;
+  height: fit-content;
+  padding: 0px 20px;
+ background-color: rgba(0, 0, 0, 1);
+}
+
+
+
+
+/* ===================== ADDITIONAL STYLES ===================== */
+
+/* Tailwind Styles */

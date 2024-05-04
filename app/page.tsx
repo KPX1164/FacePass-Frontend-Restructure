@@ -9,9 +9,9 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="VStack mt-32 gap-8 w-full items-center justify-center text-center">
-        <div className="HStack items-center justify-center gap-2 rounded-full bg-white/20 ring-1 ring-black/5 w-fit pt-2 pb-2 pl-5 pr-5">
+        <div className="HStack items-center justify-center gap-2 rounded-full dark:bg-white/20 bg-black/5 ring-1 ring-black/5 w-fit pt-2 pb-2 pl-5 pr-5">
           <SiGooglegemini />
-          <p>Powered by information iteligent</p>
+          <p>On-Cloud Information Iteligent</p>
         </div>
         <p className="text-9xl font-medium">
           Your next password <br className="hidden md:block" /> is not a
