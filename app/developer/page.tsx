@@ -34,7 +34,6 @@ export default function Home() {
 </div> */}
 <div className="w-full text-center">
   <div className="HStack items-center justify-center">
-    <SiGooglegemini />
     <p>Powered by information iteligent</p>
   </div>
   <p className="text-6xl font-medium">

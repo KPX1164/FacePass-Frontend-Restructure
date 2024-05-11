@@ -60,7 +60,7 @@ export default function Home() {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e:any) => {
     e.preventDefault();
     if (!emailEntered && email !== "") {
       const emailExistsResponse = await axios.post(
