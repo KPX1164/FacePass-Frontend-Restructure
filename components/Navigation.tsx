@@ -1,10 +1,13 @@
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { GoSun, GoMoon } from "react-icons/go";
+import Link from "next/link";
+import useToken from "@/hooks/useToken";
+
 export default function Navigation() {
-  const router = useRouter();
   const [activePage, setActivePage] = useState("/");
   const [isDay, setIsDay] = useState(true);
+  const {isLoggedIn, logout, username, token} = useToken();
   
   useEffect(() => {
     setActivePage(window.location.pathname);
@@ -15,56 +18,52 @@ export default function Navigation() {
     console.log(isDay);
   };
   
-
   return (
     <div className="HStack w-full items-center justify-center pl-7 pr-7">
       <header className="z-40 w-full HStack items-center justify-between p-5">
         <div className="HStack gap-5 text-sm items-center justify-start">
-          <p
+          <Link
             className="opacity-100 font-semibold text-2xl hover:opacity-100 cursor-pointer"
-            onClick={() => {
-              router.push("/");
-              setActivePage("/");
-            }}
+            href={"/"}
           >
             FacePass
-          </p>
+          </Link>
 
           <div className="VSection-break"></div>
           <div className="HStack items-center justify-center gap-14 rounded-full w-fit pt-2 pb-2 pl-5 pr-5 ">
-            <p
+            <Link
               className={`opacity-${
                 activePage === "/" ? "100" : "45"
               } hover:opacity-100 cursor-pointer`}
               onClick={() => {
-                router.push("/");
                 setActivePage("/");
               }}
+              href={"/"}
             >
               Home
-            </p>
-            <p
+            </Link>
+            <Link
               className={`opacity-${
                 activePage === "/plugin" ? "100" : "45"
               } hover:opacity-100  cursor-pointer`}
               onClick={() => {
-                router.push("/plugin");
                 setActivePage("/plugin");
               }}
+              href={"/plugin"}
             >
               How to use
-            </p>
-            <p
+            </Link>
+            <Link
               className={`opacity-${
                 activePage === "/pricing" ? "100" : "45"
               } hover:opacity-100  cursor-pointer`}
               onClick={() => {
-                router.push("/pricing");
                 setActivePage("/pricing");
               }}
+              href={"/pricing"}
             >
               Support
-            </p>
+            </Link>
           </div>
         </div>
 
@@ -75,22 +74,22 @@ export default function Navigation() {
           <div className="VSection-break"></div>
 
           <div className="gap-10 HStack items-center justify-center">
-          {token ? (
+          {isLoggedIn ? (
               <>
                 <p>Welcome, {username}!</p>
                 <button onClick={logout}>Logout</button>
               </>
             ) : (
               <>
-                <button onClick={() => router.push("/sign-in")}>Sign In</button>
-                <button
-                  onClick={() => router.push("/sign-up")}
+                <Link href={"/sign-in"}>Sign In</Link>
+                <Link
+                  href={"/sign-up"}
                   className="Control dark:bg-white/20 dark:bg-opacity-5"
                 >
                   Sign Up
-                </button>
+                </Link>
               </>
-            )}
+            )} 
           </div>
         </div>
       </header>

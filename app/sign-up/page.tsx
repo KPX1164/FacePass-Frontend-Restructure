@@ -34,7 +34,7 @@ export default function App() {
 
       console.log("Registration successful!", response.data);
       // Redirect or show a success message
-      router.push("/"); // Redirect to "/"
+      router.push("/sign-in"); // Redirect to "/"
     } catch (error) {
       console.error("Sign-up error:", error);
       // Handle error, show error message to user, etc.
