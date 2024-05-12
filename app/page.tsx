@@ -1,10 +1,11 @@
-"use client";
+"use client"
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { SiGooglegemini } from "react-icons/si";
+import useToken from "@/hooks/useToken";
 
 export default function Home() {
-  const router = useRouter();
+  const {username} = useToken();
 
   return (
     <main className="VStack gap-10 min-h-screen  items-center justify-between p-24">
@@ -20,12 +21,12 @@ export default function Home() {
         <p className="m-0 text-lg opacity-50">
           Find in-depth information about Next.js features and API.
         </p>
-        <button
-          onClick={() => router.push("/sign-in")}
+        <Link
+          href={"/sign-in"}
           className="text-white dark:text-black min-w-60 bg-black dark:bg-white rounded-full pl-7 pr-7 pt-3 pb-3  border-opacity-75"
         >
           Try now
-        </button>
+        </Link>
       </div>
       
 

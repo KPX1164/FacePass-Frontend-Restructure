@@ -10,11 +10,11 @@ function useToken() {
     return null;
   };
 
-  const getUsername = () => {
+  const getFirstName = () => {
     if (typeof window !== 'undefined') {
       const tokenString = localStorage.getItem('token');
       const userToken = JSON.parse(tokenString);
-      return userToken?.user.username;
+      return userToken?.user.first_name;
     }
     return null;
   };
@@ -23,16 +23,7 @@ function useToken() {
     if (typeof window !== 'undefined') {
       const tokenString = localStorage.getItem('token');
       const userToken = JSON.parse(tokenString);
-      return userToken?.user.id;
-    }
-    return null;
-  }
-
-  const getBookmarks = () => {
-    if (typeof window !== 'undefined') {
-      const tokenString = localStorage.getItem('token');
-      const userToken = JSON.parse(tokenString);
-      return userToken?.user.bookmarks;
+      return userToken?.id;
     }
     return null;
   }
@@ -41,32 +32,32 @@ function useToken() {
     if (typeof window !== 'undefined') {
       const tokenString = localStorage.getItem('token');
       const userToken = JSON.parse(tokenString);
-      return userToken?.user.Role;
+      return userToken?.user.role;
     }
     return null;
   }
 
   const [token, setToken] = useState(getToken());
-  const [username, setUsername] = useState(getUsername());
+  const [username, setUsername] = useState(getFirstName());
   const [userId, setUserId] = useState(getID());
-  const [bookmarks, setBookmarks] = useState(getBookmarks());
   const [role, setRole] = useState(getRole());
 
-  const saveToken = (userToken) => {
+
+  const saveToken = (userToken:any) => {
     localStorage.setItem('token', JSON.stringify(userToken));
-    setBookmarks(userToken.user.bookmarks);
     setUserId(userToken.user.id);
     setToken(userToken.token);
-    setUsername(userToken.user.username);
-    setRole(userToken.user.role); // Store the user's role
+    setUsername(userToken.user.first_name);
+    setRole(userToken.user.role);
   };
 
   const logout = () => {
     localStorage.removeItem('token');
     setToken(null);
     setUsername(null);
-    setRole(null);
   };
+  
+ 
 
   return {
     setToken: saveToken,
@@ -75,8 +66,7 @@ function useToken() {
     logout,
     username,
     userId,
-    bookmarks,
-    role // Include the user's role in the return object
+    role
   };
 }
 

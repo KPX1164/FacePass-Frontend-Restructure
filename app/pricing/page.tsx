@@ -1,6 +1,7 @@
 import React from "react";
 import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
 import { Button, ButtonGroup } from "@nextui-org/react";
+
 export default function App() {
   let tabs = [
     {
