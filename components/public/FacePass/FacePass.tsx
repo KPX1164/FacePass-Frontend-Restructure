@@ -1,12 +1,13 @@
 // Button.js
 "use client";
 import React, { useState } from "react";
-import Scope from "./Scope";
+import Scope from "./components/Scope";
 import "./resources/FacePassUI.css";
 import { Input, Button as NextButton } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { GoArrowUpRight } from "react-icons/go";
+import Image from "next/image";
 
 const Button = ({ scopes }: { scopes: string[] }) => {
   const [showModal, setShowModal] = useState(false);
@@ -101,10 +102,11 @@ const Button = ({ scopes }: { scopes: string[] }) => {
                     Cancel
                   </button>
                 </div>
+              
                 <img
-                  className="FacePass-Media-Logo"
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/App_Store_%28iOS%29.svg/2048px-App_Store_%28iOS%29.svg.png"
-                  alt=""
+                  alt=" Logo"
+                  className="FacePass-Media-Logo"
                 />
                 <p className="FacePass-Text-Header">
                   Request data linked to you

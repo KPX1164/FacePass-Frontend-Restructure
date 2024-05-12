@@ -5,7 +5,7 @@ export default function Navigation() {
   const router = useRouter();
   const [activePage, setActivePage] = useState("/");
   const [isDay, setIsDay] = useState(true);
-  
+
   useEffect(() => {
     setActivePage(window.location.pathname);
   }, []);
@@ -14,14 +14,18 @@ export default function Navigation() {
     setIsDay(!isDay);
     console.log(isDay);
   };
-  
+
+  const logout = () => {
+    localStorage.removeItem("token");
+  };
+
 
   return (
-    <div className="HStack w-full items-center justify-center pl-7 pr-7">
-      <header className="z-40 w-full HStack items-center justify-between p-5">
+    <div className="HStack w-full items-center justify-center pl-5 pr-5">
+      <header className="z-40 w-full HStack items-center justify-between p-3">
         <div className="HStack gap-5 text-sm items-center justify-start">
           <p
-            className="opacity-100 font-semibold text-2xl hover:opacity-100 cursor-pointer"
+            className="opacity-100 font-semibold text-lg hover:opacity-100 cursor-pointer"
             onClick={() => {
               router.push("/");
               setActivePage("/");
@@ -75,13 +79,7 @@ export default function Navigation() {
           <div className="VSection-break"></div>
 
           <div className="gap-10 HStack items-center justify-center">
-          {token ? (
-              <>
-                <p>Welcome, {username}!</p>
-                <button onClick={logout}>Logout</button>
-              </>
-            ) : (
-              <>
+          
                 <button onClick={() => router.push("/sign-in")}>Sign In</button>
                 <button
                   onClick={() => router.push("/sign-up")}
@@ -89,8 +87,6 @@ export default function Navigation() {
                 >
                   Sign Up
                 </button>
-              </>
-            )}
           </div>
         </div>
       </header>

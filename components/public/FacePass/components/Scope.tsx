@@ -8,7 +8,7 @@ import {
 import { MdEmail } from "react-icons/md";
 import { IoCalendarNumber } from "react-icons/io5";
 import { FaPersonCircleExclamation } from "react-icons/fa6";
-import "./resources/FacePassUI.css";
+import "../resources/FacePassUI.css";
 
 interface ScopeObject {
   icon: JSX.Element;
