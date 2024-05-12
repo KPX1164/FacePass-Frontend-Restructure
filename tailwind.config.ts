@@ -11,10 +11,17 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
+        "simon-dark": "url('/dark-simon.jpeg')",
+        "simon-light": "url('/light-simon.jpg')",
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      backgroundColor:{
+        "secondary":"#f7f7f7",
+        "dark-secondary":"#1c1c1e"
+        
+      }
     },
   },
   plugins: [nextui()],

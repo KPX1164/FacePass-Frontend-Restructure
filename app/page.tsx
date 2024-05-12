@@ -7,8 +7,8 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="VStack mt-32 gap-8 w-full items-center justify-center text-center">
+    <main className="VStack gap-10 min-h-screen  items-center justify-between p-24">
+      <div className="VStack mt-12 gap-8 w-full items-center justify-center text-center">
         <div className="HStack items-center justify-center gap-2 rounded-full dark:bg-white/20 bg-black/5 ring-1 ring-black/5 w-fit pt-2 pb-2 pl-5 pr-5">
           <SiGooglegemini />
           <p>On-Cloud Vision Inteligent</p>
@@ -29,7 +29,7 @@ export default function Home() {
       </div>
       
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
+      <div className="mb-32 gap-10 items-center justify-center w-full text-center lg:mb-0 lg:w-full HStack lg:text-left">
         <a
           href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
@@ -37,7 +37,38 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
+            How to use?{" "}
+            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+              -&gt;
+            </span>
+          </h2>
+          <p className="m-0 max-w-[30ch] text-sm opacity-50">
+            Find in-depth information about Next.js features and API.
+          </p>
+        </a>
+        <a
+          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h2 className="mb-3 text-2xl font-semibold">
+            How does it work?{" "}
+            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+              -&gt;
+            </span>
+          </h2>
+          <p className="m-0 max-w-[30ch] text-sm opacity-50">
+            Find in-depth information about Next.js features and API.
+          </p>
+        </a><a
+          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h2 className="mb-3 text-2xl font-semibold">
+            How to be FacePass developer?{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
