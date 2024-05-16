@@ -1,24 +1,16 @@
-
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import useToken from "@/hooks/useToken";
-import SignInWithLayout from "@/components/SignInLayout";
-
+import SignInForm from "@/components/SignInForm";
 
 export default function App() {
-  const {setToken, token} = useToken();
 
-  useEffect(() => {
-    if (token) {
-      window.location.href = "/";
-    }
-  }, [token]); 
 
-  if(!token) {
-    return (
-      <>
-        <SignInWithLayout setToken={setToken} />
-      </>
-    );
-  }
+  return (
+    <section className="VStack w-full h-full items-center justify-center gap-5">
+      <p className="font-semibold text-3xl">Sign In to FacePass Account</p>
+      <p>Manage your FacePass account</p> <SignInForm />
+    </section>
+  );
 }

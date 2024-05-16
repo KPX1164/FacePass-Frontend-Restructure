@@ -50,7 +50,7 @@ export default function App() {
     <main className="VStack min-h-screen items-center">
       <div className="VStack gap-5 items-center pt-24">
         <p className="font-semibold text-3xl">
-          Create Your FacePass Developer Account
+          Create Your FacePass Account
         </p>
         <p>One FacePass account is all you need to access all services.</p>
         <form onSubmit={handleSubmit} className="VStack gap-5">

@@ -65,7 +65,7 @@ async function loginUser(credentials:any) {
     return (
       <main className="VStack min-h-screen items-center">
         <div className="VStack gap-5 items-center pt-24">
-          <p className="font-semibold text-3xl">FacePass Developer Account</p>
+          <p className="font-semibold text-3xl">FacePass Account</p>
           <p>Manage your FacePass account</p>
           <div className="w-full">
             <form onSubmit={handleSubmit} className="VStack gap-5">

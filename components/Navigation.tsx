@@ -7,8 +7,8 @@ import useToken from "@/hooks/useToken";
 export default function Navigation() {
   const [activePage, setActivePage] = useState("/");
   const [isDay, setIsDay] = useState(true);
-  const {isLoggedIn, logout, username, token} = useToken();
-  
+  const { isLoggedIn, logout, username, role, token } = useToken();
+
   useEffect(() => {
     setActivePage(window.location.pathname);
   }, []);
@@ -17,7 +17,7 @@ export default function Navigation() {
     setIsDay(!isDay);
     console.log(isDay);
   };
-  
+
   return (
     <div className="HStack w-full items-center justify-center pl-7 pr-7">
       <header className="z-40 w-full HStack items-center justify-between p-5">
@@ -74,10 +74,15 @@ export default function Navigation() {
           <div className="VSection-break"></div>
 
           <div className="gap-10 HStack items-center justify-center">
-          {isLoggedIn ? (
+            {isLoggedIn ? (
               <>
                 <p>Welcome, {username}!</p>
-                <button onClick={logout}>Logout</button>
+                <button
+                  className="Control dark:bg-white/20 dark:bg-opacity-5"
+                  onClick={logout}
+                >
+                  Logout
+                </button>
               </>
             ) : (
               <>
@@ -89,7 +94,7 @@ export default function Navigation() {
                   Sign Up
                 </Link>
               </>
-            )} 
+            )}
           </div>
         </div>
       </header>
