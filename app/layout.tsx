@@ -2,9 +2,10 @@
 import { useRouter } from "next/navigation";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { NextUIProvider } from "@nextui-org/react";
+// import { NextUIProvider } from "@nextui-org/react";
 import Navigation from "@/components/Navigation";
 const inter = Inter({ subsets: ["latin"] });
+import useToken from "@/hooks/useToken";
 
 export default function RootLayout({
   children,
@@ -12,6 +13,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const router = useRouter();
+  const { isLoggedIn, role } = useToken();
+  const isDeveloper = typeof window !== 'undefined' && window.location.href.includes('developer');
 
   return (
     <html lang="en">
@@ -37,13 +40,6 @@ export default function RootLayout({
               rgba(255, 255, 255, 1) 1.7000000000000002px
             );
             background-size: 34px 34px;
-
-            // background-opacity: 0.2;
-            // background-image: radial-gradient(
-            //   #b9b9b9 1.7000000000000002px,
-            //   rgba(255, 255, 255, 1) 1.7000000000000002px
-            // );
-            // background-size: 19px 19px;
           }
 
           @keyframes slide {
@@ -61,7 +57,7 @@ export default function RootLayout({
             left: 0;
             width: 100%;
             height: 100%;
-            overflow-y: auto; 
+            overflow-y: auto;
           }
 
           /* Dark mode */
@@ -77,7 +73,9 @@ export default function RootLayout({
       </head>
       <body className={inter.className + " dark:dark"}>
         <div className="background-container">
-          <Navigation />
+         
+        <Navigation isDeveloper={isDeveloper} />
+
           <div className="content-container">{children}</div>
           {/* <Footer /> */}
         </div>
