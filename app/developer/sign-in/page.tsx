@@ -1,17 +1,18 @@
-"use client";
-import React, { useState } from "react";
-import axios from "axios";
-import useToken from "@/hooks/useToken";
+// App.tsx
+'use client'
+import React from "react";
 import SignInForm from "@/components/SignInForm";
 
-export default function App() {
+const App = () => {
   return (
     <section className="VStack w-full h-full items-center justify-center gap-5">
       <p className="font-semibold text-3xl">
         Sign In to FacePass Developer Account
       </p>
-      <p>Manage your FacePass account</p> <SignInForm />{" "}
+      <p>Manage your FacePass account</p>
       <SignInForm isDeveloperPage={true} />
     </section>
   );
-}
+};
+
+export default App;
