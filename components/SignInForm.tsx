@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Input, Button, Checkbox } from "@nextui-org/react";
 import axios from "axios";
 import useToken from "@/hooks/useToken";
@@ -16,6 +16,13 @@ const SignInForm: React.FC<SignInFormProps> = ({ isDeveloperPage = false }) => {
   const [checked, setChecked] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [signedIn, setSignedIn] = useState(false);
+
+  useEffect(() => {
+    // Redirect if user is already a developer
+    if (signedIn && role !== "user") {
+      window.location.href = "/developer";
+    }
+  }, [signedIn, role]);
 
   const checkEmailExists = async (email: string) => {
     try {
