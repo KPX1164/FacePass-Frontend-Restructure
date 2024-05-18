@@ -37,36 +37,36 @@ const Navigation: React.FC<NavigationProps> = ({ isDeveloper = false }) => {
           <div className="HStack items-center justify-center gap-14 rounded-full w-fit pt-2 pb-2 pl-5 pr-5">
             <Link
               className={`opacity-${
-                activePage === (isDeveloper ? "/Discovers" : "/") ? "100" : "45"
+                activePage === (isDeveloper ? "/developer/discovers" : "/") ? "100" : "25"
               } hover:opacity-100 cursor-pointer`}
-              onClick={() => setActivePage(isDeveloper ? "/Discovers" : "/")}
-              href={isDeveloper ? "/Discovers" : "/"}
+              onClick={() => setActivePage(isDeveloper ? "/developer/discovers" : "/")}
+              href={isDeveloper ? "/developer/discovers" : "/"}
             >
               {isDeveloper ? "Discovers" : "Home"}
             </Link>
             <Link
               className={`opacity-${
-                activePage === (isDeveloper ? "/documentation" : "/plugin")
+                activePage === (isDeveloper ? "/developer/documentation" : "/plugin")
                   ? "100"
-                  : "45"
+                  : "25"
               } hover:opacity-100 cursor-pointer`}
               onClick={() =>
-                setActivePage(isDeveloper ? "/documentation" : "/plugin")
+                setActivePage(isDeveloper ? "/developer/documentation" : "/plugin")
               }
-              href={isDeveloper ? "/documentation" : "/plugin"}
+              href={isDeveloper ? "/developer/documentation" : "/howtouse"}
             >
               {isDeveloper ? "Documentation" : "How to use"}
             </Link>
             <Link
               className={`opacity-${
-                activePage === (isDeveloper ? "/component" : "/pricing")
+                activePage === (isDeveloper ? "/developer/components" : "/support")
                   ? "100"
-                  : "45"
+                  : "25"
               } hover:opacity-100 cursor-pointer`}
               onClick={() =>
-                setActivePage(isDeveloper ? "/component" : "/pricing")
+                setActivePage(isDeveloper ? "/developer/components" : "/support")
               }
-              href={isDeveloper ? "/component" : "/pricing"}
+              href={isDeveloper ? "/developer/components" : "/support"}
             >
               {isDeveloper ? "Components" : "Support"}
             </Link>
@@ -74,28 +74,34 @@ const Navigation: React.FC<NavigationProps> = ({ isDeveloper = false }) => {
               <>
                 <Link
                   className={`opacity-${
-                    activePage === "/design" ? "100" : "45"
+                    activePage === (isDeveloper ? "/developer/design" : "/")
+                      ? "100"
+                      : "25"
                   } hover:opacity-100 cursor-pointer`}
-                  onClick={() => setActivePage("/design")}
-                  href="/design"
+                  onClick={() => setActivePage("/developer/design")}
+                  href="/developer/design"
                 >
                   Design
                 </Link>
                 <Link
-                  className={`opacity-${
-                    activePage === "/demo" ? "100" : "45"
+                   className={`opacity-${
+                    activePage === (isDeveloper ? "/developer/demo" : "/")
+                      ? "100"
+                      : "25"
                   } hover:opacity-100 cursor-pointer`}
-                  onClick={() => setActivePage("/demo")}
-                  href="/demo"
+                  onClick={() => setActivePage("/developer/demo")}
+                  href="/developer/demo"
                 >
                   Demo
                 </Link>
                 <Link
-                  className={`opacity-${
-                    activePage === "/developersupport" ? "100" : "45"
+                   className={`opacity-${
+                    activePage === (isDeveloper ? "/developer/support" : "/")
+                      ? "100"
+                      : "25"
                   } hover:opacity-100 cursor-pointer`}
-                  onClick={() => setActivePage("/developersupport")}
-                  href="/developersupport"
+                  onClick={() => setActivePage("/developer/support")}
+                  href="/developer/support"
                 >
                   Support
                 </Link>
@@ -106,12 +112,12 @@ const Navigation: React.FC<NavigationProps> = ({ isDeveloper = false }) => {
 
         {isDeveloper ? (
           <div className="HStack items-center gap-10 justify-end">
-             <Link
-                    href="/sign-in"
-                    className="Control dark:bg-white/20 dark:bg-opacity-5"
-                  >
-                    Account
-                  </Link>
+            <Link
+              href="/sign-in"
+              className="Control dark:bg-white/20 dark:bg-opacity-5"
+            >
+              Account
+            </Link>
           </div>
         ) : (
           <div className="HStack items-center gap-10 justify-end">

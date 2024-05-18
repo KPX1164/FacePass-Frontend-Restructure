@@ -8,7 +8,7 @@ export default function Home() {
   const {username} = useToken();
 
   return (
-    <main className="VStack gap-10 min-h-screen  items-center justify-between p-24">
+    <main className="VStack gap-40 min-h-screen  items-center justify-start">
       <div className="VStack mt-12 gap-8 w-full items-center justify-center text-center">
         <div className="HStack items-center justify-center gap-2 rounded-full dark:bg-white/20 bg-black/5 ring-1 ring-black/5 w-fit pt-2 pb-2 pl-5 pr-5">
           <SiGooglegemini />

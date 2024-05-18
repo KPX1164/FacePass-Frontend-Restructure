@@ -14,7 +14,8 @@ export default function RootLayout({
 }>) {
   const router = useRouter();
   const { isLoggedIn, role } = useToken();
-  const isDeveloper = typeof window !== 'undefined' && window.location.href.includes('developer');
+  const isDeveloper =
+    typeof window !== "undefined" && window.location.href.includes("developer");
 
   return (
     <html lang="en">
@@ -24,7 +25,7 @@ export default function RootLayout({
             margin: 0;
             padding: 0;
           }
-
+         
           .background-container {
             position: fixed;
             top: 0;
@@ -33,50 +34,34 @@ export default function RootLayout({
             height: 100%;
             overflow: hidden;
 
-            background-color: #ffffff;
-            opacity: 0.8;
-            background-image: radial-gradient(
-              #b9b9b9 1.7000000000000002px,
-              rgba(255, 255, 255, 1) 1.7000000000000002px
-            );
-            background-size: 34px 34px;
-          }
-
-          @keyframes slide {
-            from {
-              background-position: 0 0;
-            }
-            to {
-              background-position: 100% 0;
-            }
+            background-opacity: 0.2;
+            background-image:  linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(to right, #ffffff 1px, rgba(0,0,0,0) 1px);
+            background-size: 20px 20px;
           }
 
           .content-container {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
+            height: calc(
+              100% - 64px
+            ); /* Subtract the height of the navigation bar */
             overflow-y: auto;
           }
 
           /* Dark mode */
           @media (prefers-color-scheme: dark) {
             .background-container {
-              background-image: radial-gradient(
-                rgba(38, 38, 38, 0.8) 1.7000000000000002px,
-                rgba(0, 0, 0, 1) 1.7000000000000002px
-              );
+              background-opacity: 0.2;
+              background-image:  linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(to right, rgba(255,255,255,0.07) 1px, rgba(0,0,0,0) 1px);
             }
           }
         `}</style>
       </head>
       <body className={inter.className + " dark:dark"}>
         <div className="background-container">
-         
-        <Navigation isDeveloper={isDeveloper} />
-
-          <div className="content-container">{children}</div>
+          <Navigation isDeveloper={isDeveloper} />
+          <div className="content-container pl-12 pr-12 pb-12 ">
+            {children}
+          </div>
           {/* <Footer /> */}
         </div>
       </body>

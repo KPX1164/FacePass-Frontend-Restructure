@@ -48,6 +48,18 @@
     background-size: auto, auto;
     overflow: hidden;
   }
+  .HSection-break {
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+
+  .VSection-break {
+    background-color: rgba(
+      255,
+      255,
+      255,
+      0.25
+    ); /* Made it darker for visibility */
+  }
 }
 
 body {
@@ -120,10 +132,9 @@ body {
   align-items: center;
   padding: 8px;
 
-
   border-radius: 500px;
   background-color: rgba(0, 0, 0, 0.05); /* for light mode */
-  
+
   overflow: hidden;
   max-width: fit-content;
   justify-content: center;
