@@ -16,7 +16,7 @@ const SideNavigation: React.FC<SideNavigationProps> = ({ setSelectedItem }) => {
   const getItemClassNames = (item: string) => {
     const isActive = selected === item;
     return `pl-3 pr-3 pt-2 pb-2 rounded-md cursor-pointer ${
-      isActive ? 'bg-dark-secondary opacity-100' : 'bg-transparent opacity-25'
+      isActive ? 'bg-white  shadow-md dark:bg-dark-secondary opacity-100' : 'bg-transparent opacity-25'
     }`;
   };
 
@@ -34,7 +34,7 @@ const SideNavigation: React.FC<SideNavigationProps> = ({ setSelectedItem }) => {
         </ul>
       </div>
       <div className="flex flex-col gap-3">
-        <p className="font-medium">Guides</p>
+        <p className="font-medium">Customisation</p>
         <ul className="list-none">
           <li onClick={() => handleNavClick('parameters')} className={getItemClassNames('parameters')}>
             Parameters & Options
