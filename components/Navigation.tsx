@@ -107,7 +107,7 @@ const Navigation: React.FC<NavigationProps> = ({ isDeveloper = false }) => {
         {isDeveloper ? (
           <div className="HStack items-center gap-10 justify-end">
             <Link
-              href="/sign-in"
+              href="/developer/sign-in"
               className="Control dark:bg-white/20 dark:bg-opacity-5"
             >
               Account
