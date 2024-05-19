@@ -24,7 +24,7 @@ export default function App() {
         </div>
 
         <p className="text-3xl font-medium ">Find documents and Guildelines</p>
-        <section className="grid grid-cols-3 gap-4 min-h-[300px]">
+        <section className="grid grid-cols-3 gap-4 h-[300px]">
           <div className="bg-white w-full h-full rounded-lg p-10">
             <div className="h-4/6"></div>
             <div className="h-2/6">
