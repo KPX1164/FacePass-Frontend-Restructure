@@ -4,7 +4,7 @@ import { GoSun, GoMoon } from "react-icons/go";
 import Link from "next/link";
 import useToken from "@/hooks/useToken";
 import dynamic from "next/dynamic";
-
+import { GoArrowUpRight } from "react-icons/go";
 type NavigationProps = {
   isDeveloper?: boolean;
 };
@@ -24,7 +24,7 @@ const Navigation: React.FC<NavigationProps> = ({ isDeveloper = false }) => {
   };
 
   return (
-    <div className="HStack w-full items-center justify-center pl-7 pr-7">
+    <div className="HStack w-full items-center justify-center pl-7 pr-7 min-h-[80px]">
       <header className="z-40 w-full HStack items-center justify-between p-5">
         <div className="HStack gap-5 text-sm items-center justify-start">
           <Link
@@ -35,15 +35,15 @@ const Navigation: React.FC<NavigationProps> = ({ isDeveloper = false }) => {
           </Link>
           <div className="VSection-break"></div>
           <div className="HStack items-center justify-center gap-14 rounded-full w-fit pt-2 pb-2 pl-5 pr-5">
-            <Link
-              className={`opacity-${
-                activePage === (isDeveloper ? "/developer/discovers" : "/") ? "100" : "25"
-              } hover:opacity-100 cursor-pointer`}
-              onClick={() => setActivePage(isDeveloper ? "/developer/discovers" : "/")}
-              href={isDeveloper ? "/developer/discovers" : "/"}
-            >
-              {isDeveloper ? "Discovers" : "Home"}
-            </Link>
+            {!isDeveloper && (
+              <Link
+                className={`opacity-${activePage === "/" ? "100" : "25"} hover:opacity-100 cursor-pointer`}
+                onClick={() => setActivePage("/")}
+                href="/"
+              >
+                Home
+              </Link>
+            )}
             <Link
               className={`opacity-${
                 activePage === (isDeveloper ? "/developer/documentation" : "/plugin")
@@ -74,9 +74,7 @@ const Navigation: React.FC<NavigationProps> = ({ isDeveloper = false }) => {
               <>
                 <Link
                   className={`opacity-${
-                    activePage === (isDeveloper ? "/developer/design" : "/")
-                      ? "100"
-                      : "25"
+                    activePage === "/developer/design" ? "100" : "25"
                   } hover:opacity-100 cursor-pointer`}
                   onClick={() => setActivePage("/developer/design")}
                   href="/developer/design"
@@ -84,10 +82,8 @@ const Navigation: React.FC<NavigationProps> = ({ isDeveloper = false }) => {
                   Design
                 </Link>
                 <Link
-                   className={`opacity-${
-                    activePage === (isDeveloper ? "/developer/demo" : "/")
-                      ? "100"
-                      : "25"
+                  className={`opacity-${
+                    activePage === "/developer/demo" ? "100" : "25"
                   } hover:opacity-100 cursor-pointer`}
                   onClick={() => setActivePage("/developer/demo")}
                   href="/developer/demo"
@@ -95,10 +91,8 @@ const Navigation: React.FC<NavigationProps> = ({ isDeveloper = false }) => {
                   Demo
                 </Link>
                 <Link
-                   className={`opacity-${
-                    activePage === (isDeveloper ? "/developer/support" : "/")
-                      ? "100"
-                      : "25"
+                  className={`opacity-${
+                    activePage === "/developer/support" ? "100" : "25"
                   } hover:opacity-100 cursor-pointer`}
                   onClick={() => setActivePage("/developer/support")}
                   href="/developer/support"
