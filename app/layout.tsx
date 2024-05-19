@@ -34,9 +34,9 @@ export default function RootLayout({
             height: 100%;
             overflow: hidden;
 
-            background-opacity: 0.2;
-            background-image:  linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(to right, #ffffff 1px, rgba(0,0,0,0) 1px);
-            background-size: 20px 20px;
+            // background-opacity: 0.2;
+            // background-image:  linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(to right, #ffffff 1px, rgba(0,0,0,0) 1px);
+            // background-size: 20px 20px;
           }
 
           .content-container {
@@ -49,10 +49,10 @@ export default function RootLayout({
 
           /* Dark mode */
           @media (prefers-color-scheme: dark) {
-            .background-container {
-              background-opacity: 0.2;
-              background-image:  linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(to right, rgba(255,255,255,0.07) 1px, rgba(0,0,0,0) 1px);
-            }
+            // .background-container {
+            //   background-opacity: 0.2;
+            //   background-image:  linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(to right, rgba(255,255,255,0.07) 1px, rgba(0,0,0,0) 1px);
+            // }
           }
         `}</style>
       </head>
