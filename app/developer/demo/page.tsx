@@ -16,7 +16,7 @@ export default function App() {
   const requests = ["fullname", "phone", "email", "location"];
 
   return (
-    <main className="flex min-h-screen top-0 fixed w-screen">
+    <main className="flex min-h-screen top-0 fixed w-screen Optimise-view ">
       <section className=" w-full mt-20 mb-10">
         <div className="flex w-full h-full">
           <section className="w-1/2 h-full border-gray-500 border-2 border-opacity-25 bg-white rounded-lg p-4 mr-2">

@@ -2,10 +2,18 @@
 import { useRouter } from "next/navigation";
 import { Inter } from "next/font/google";
 import "./globals.css";
-// import { NextUIProvider } from "@nextui-org/react";
 import Navigation from "@/components/Navigation";
 const inter = Inter({ subsets: ["latin"] });
 import useToken from "@/hooks/useToken";
+import ToolBars from "@/components/ToolBars";
+
+type PathMap = {
+  "": string;
+  developer: string;
+  control: string;
+  "developer/console": string;
+  "developer/console/project": string;
+};
 
 export default function RootLayout({
   children,
@@ -14,8 +22,22 @@ export default function RootLayout({
 }>) {
   const router = useRouter();
   const { isLoggedIn, role } = useToken();
-  const isDeveloper =
-    typeof window !== "undefined" && window.location.href.includes("developer");
+
+  const siteApp = (() => {
+    if (typeof window !== "undefined") {
+      const pathname = window.location.pathname;
+      const parts = pathname.split("/").filter(Boolean);
+      const pathMap: PathMap = {
+        "": "FacePass",
+        developer: "Developer",
+        control: "Control Center",
+        "developer/console": "Console",
+        "developer/console/project": "Project",
+      };
+      return pathMap[parts.join("/") as keyof PathMap]; // Use type assertion here
+    }
+    return "FacePass"; // Default value
+  })();
 
   return (
     <html lang="en">
@@ -25,7 +47,7 @@ export default function RootLayout({
             margin: 0;
             padding: 0;
           }
-         
+
           .background-container {
             position: fixed;
             top: 0;
@@ -33,36 +55,29 @@ export default function RootLayout({
             width: 100%;
             height: 100%;
             overflow: hidden;
-
-            // background-opacity: 0.2;
-            // background-image:  linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(to right, #ffffff 1px, rgba(0,0,0,0) 1px);
-            // background-size: 20px 20px;
           }
 
           .content-container {
             width: 100%;
-            height: calc(
-              100% - 64px
-            ); /* Subtract the height of the navigation bar */
+            height: calc(100% - 64px);
             overflow-y: auto;
           }
-
-          /* Dark mode */
+          .Outer-frame {
+            border: 10px white solid;
+          }
+          .Inner-frame {
+            border: 20px white solid;
+            border-radius: 32px;
+          }
           @media (prefers-color-scheme: dark) {
-            // .background-container {
-            //   background-opacity: 0.2;
-            //   background-image:  linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(to right, rgba(255,255,255,0.07) 1px, rgba(0,0,0,0) 1px);
-            // }
           }
         `}</style>
       </head>
-      <body className={inter.className + " dark:dark"}>
-        <div className="background-container">
-          <Navigation isDeveloper={isDeveloper} />
-          <div className="content-container pl-12 pr-12 pb-12 ">
-            {children}
-          </div>
-          {/* <Footer /> */}
+      <body className={inter.className + "bg-tridary dark:dark Outer-frame"}>
+        <div className="background-container bg-tridary Inner-frame">
+          {/* <Navigation isDeveloper={isDeveloper} siteApp={siteApp} /> */}
+          <ToolBars siteApp={siteApp.toLowerCase()} />
+          <div className="content-container bg-tridary">{children}</div>
         </div>
       </body>
     </html>

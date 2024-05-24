@@ -10,7 +10,7 @@ import { HiOutlineCode } from "react-icons/hi";
 
 export default function App() {
   return (
-    <main className="flex min-h-screen flex-col justify-between lg:items-center">
+    <main className="flex min-h-screen flex-col justify-between lg:items-center Optimise-view ">
       <section className="gap-5  VStack text-left w-full h-full mt-20 lg:w-8/12">
         <p className="text-3xl font-medium ">Get helps</p>
         <p className="opacity-70 w-3/4">
@@ -35,7 +35,7 @@ export default function App() {
             </div>
             <div className="h-3/6 VStack gap-2">
               <p className="font-medium text-lg">Installation</p>
-              <ul>
+              <ul className="VStack gap-1">
                 <Link className="HStack gap-1 items-center p-1" href="#">
                   <IoDocumentTextOutline className="text-2xl" />
 
@@ -55,7 +55,7 @@ export default function App() {
             </div>
             <div className="h-3/6 VStack gap-2">
               <p className="font-medium text-lg">Coding and Usage</p>
-              <ul>
+              <ul className="VStack gap-1">
                 <Link className="HStack gap-1 items-center p-1" href="#">
                   <IoDocumentTextOutline className="text-2xl" />
 
@@ -75,7 +75,7 @@ export default function App() {
             </div>
             <div className="h-3/6 VStack gap-2">
               <p className="font-medium text-lg">Terms and Conditions</p>
-              <ul>
+              <ul className="VStack gap-1">
                 <Link className="HStack gap-1 items-center p-1" href="#">
                   <IoDocumentTextOutline className="text-2xl" />
 

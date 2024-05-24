@@ -5,7 +5,7 @@ import SupportContact from "@/components/SupportContact";
 export default function App() {
 
   return (
-    <main className="flex min-h-screen flex-col justify-between lg:items-center">
+    <main className="flex min-h-screen flex-col justify-between lg:items-center Optimise-view ">
       <section className="gap-5  VStack text-left w-full h-full mt-10 lg:w-8/12">
         <p className="text-3xl font-medium ">FacePass Support</p>
         <p className="opacity-70 w-3/4">

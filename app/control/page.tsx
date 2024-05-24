@@ -20,8 +20,8 @@ import { Switch } from "@nextui-org/react";
 export default function App() {
   return (
     <main className="flex h-screen flex-col items-center justify-center bg-cover bg-simon-light dark:bg-simon-dark">
-      <div className="w-full h-full pt-14">
-        <div className="HStack h-full w-full pl-7 pr-7 pb-7 justify-between">
+      <div className="w-full h-full">
+        <div className="HStack h-full w-full justify-between">
           <div className="HStack h-full w-full justify-between">
             <section className="VStack w-full p-5">
               <div className="HStack items-center justify-between">
@@ -156,7 +156,7 @@ export default function App() {
               </section>
             </section>
             <section className="w-2/6 max-w-[400px] mt-7  HStack justify-end">
-              <div className=" p-5 w-full  bg-black">
+              <div className=" p-5 w-full  bg-white">
                 <div className="HStack mt-10 justify-center h-full">
                   <div className="VStack h-full w-full items-center gap-3">
                     <img

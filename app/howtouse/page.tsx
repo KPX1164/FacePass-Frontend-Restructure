@@ -4,7 +4,7 @@ import { GoChevronRight } from "react-icons/go";
 
 export default function App() {
   return (
-    <main className="flex min-h-screen flex-col justify-between lg:items-center">
+    <main className="flex min-h-screen flex-col justify-between lg:items-center Optimise-view ">
       <section className="gap-5  VStack items-center w-full h-full mt-20 lg:w-8/12">
         <p className="text-xl">Easy way to use</p>
         <p className="text-5xl font-semibold ">Sign In with FacePass</p>

@@ -98,12 +98,7 @@ export default function Home() {
       case "actions":
         return (
           <div className="relative flex items-center gap-2">
-            <Tooltip content="Edit user">
-              <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                {/* <EditIcon /> */}
-                <MdEdit />
-              </span>
-            </Tooltip>
+        
             <Tooltip color="danger" content="Delete user">
               <span className="text-lg text-danger cursor-pointer active:opacity-50">
                 {/* <DeleteIcon /> */}
@@ -117,7 +112,7 @@ export default function Home() {
     }
   }, []);
   return (
-    <main className="flex h-screen flex-col items-center justify-center pt-14 bg-secondary dark:bg-dark-secondary">
+    <main className="flex h-screen flex-col items-center justify-center ">
       <div className="HStack w-full h-full pt-5 pb-5 pl-7 pr-7">
         <section
           id="Toolbar"

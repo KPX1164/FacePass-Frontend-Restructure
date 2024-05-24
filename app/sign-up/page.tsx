@@ -47,7 +47,7 @@ export default function App() {
   };
 
   return (
-    <main className="VStack min-h-screen items-center">
+    <main className="VStack min-h-screen items-center Optimise-view ">
       <div className="VStack gap-5 items-center pt-24">
         <p className="font-semibold text-3xl">
           Create Your FacePass Account

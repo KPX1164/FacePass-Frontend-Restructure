@@ -7,7 +7,7 @@ export default function Home() {
 
   return (
 // new navbar
-<main className="flex min-h-screen flex-col items-center justify-between">
+<main className="flex min-h-screen flex-col items-center gap-10">
 
 <div className="w-full text-center">
   <div className="HStack items-center justify-center">

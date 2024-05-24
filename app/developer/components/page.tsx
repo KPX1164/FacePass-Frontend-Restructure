@@ -118,7 +118,7 @@ export default function App() {
   }, []);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between">
+    <main className="flex min-h-screen flex-col items-center justify-between Optimise-view ">
       <section className="w-full h-full flex">
         <section className="w-2/12 h-full sticky top-0">
           <SideNavigation setSelectedItem={setSelectedItem} />
