@@ -17,28 +17,26 @@ const ToolBars: React.FC<ToolBarsProps> = ({ siteApp = "FacePass" }) => {
   const [activePage, setActivePage] = useState("/");
   const { isLoggedIn } = useToken();
 
-
   useEffect(() => {
     const handleRouteChange = () => {
       setActivePage(window.location.pathname);
     };
-  
+
     // Update activePage on component mount
     setActivePage(window.location.pathname);
-  
+
     // Update activePage when route changes
-    window.addEventListener('popstate', handleRouteChange);
-  
+    window.addEventListener("popstate", handleRouteChange);
+
     // Clean up event listener
     return () => {
-      window.removeEventListener('popstate', handleRouteChange);
+      window.removeEventListener("popstate", handleRouteChange);
     };
   }, []);
-  
-  
-//   useEffect(() => {
-//     setActivePage(window.location.pathname);
-//   }, []);
+
+  //   useEffect(() => {
+  //     setActivePage(window.location.pathname);
+  //   }, []);
 
   const renderTools = (key: string) => {
     switch (key) {
@@ -71,10 +69,14 @@ const ToolBars: React.FC<ToolBarsProps> = ({ siteApp = "FacePass" }) => {
           {siteApp === "console" ? (
             <div className="gap-1 HStack items-center ">
               <HiCubeTransparent className="text-2xl font-bold" />
-              <p className="font-semibold text-2xl">{siteApp.charAt(0).toUpperCase() + siteApp.slice(1)}</p>
+              <p className="font-semibold text-2xl">
+                {siteApp.charAt(0).toUpperCase() + siteApp.slice(1)}
+              </p>
             </div>
           ) : (
-<p className="font-semibold text-2xl">{siteApp.charAt(0).toUpperCase() + siteApp.slice(1)}</p>
+            <p className="font-semibold text-2xl">
+              {siteApp.charAt(0).toUpperCase() + siteApp.slice(1)}
+            </p>
           )}
         </div>
 
@@ -96,18 +98,31 @@ const ToolBars: React.FC<ToolBarsProps> = ({ siteApp = "FacePass" }) => {
           </div>
         ) : (
           <>
-            <Link
-              href="/sign-up"
+          {siteApp === "developer" ? ( 
+            <div className="HStack gap-5">
+              <Link
+              href="/developer/sign-in"
               className="bg-night pt-2 pb-2 pl-4 pr-4 rounded-lg text-sm text-white"
             >
-              Sign Up
+              Account
             </Link>
-            <Link
-              href="/sign-in"
-              className=" border-1.5 border-night pt-2 text-black pb-2 pl-4 pr-4 rounded-lg text-sm "
-            >
-              Sign In
-            </Link>
+        
+            </div>
+          ):(    <div className="HStack gap-5">
+          <Link
+          href="/sign-up"
+          className="bg-night pt-2 pb-2 pl-4 pr-4 rounded-lg text-sm text-white"
+        >
+          Sign Up
+        </Link>
+        <Link
+          href="/sign-in"
+          className=" border-1.5 border-night pt-2 text-black pb-2 pl-4 pr-4 rounded-lg text-sm "
+        >
+          Sign In
+        </Link>
+        </div>)}
+            
           </>
         )}
       </div>
