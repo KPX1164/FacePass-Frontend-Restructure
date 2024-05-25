@@ -1,8 +1,17 @@
+"use client";
 import React from "react";
 import { Link } from "@nextui-org/react";
 import { GoArrowUpRight } from "react-icons/go";
 import { GoChevronRight } from "react-icons/go";
-
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
+} from "@nextui-org/react";
+import CreateProject from "@/components/CreateProject";
 import Waves from "@/components/Waves";
 import { SlOptionsVertical } from "react-icons/sl";
 import {
@@ -12,8 +21,18 @@ import {
   DropdownItem,
   Button,
 } from "@nextui-org/react";
-
+import { useState } from "react";
 export default function App() {
+  const [showModal, setShowModal] = useState(false);
+
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const handleButtonClick = () => {
+    setShowModal(true);
+  };
+  const handleCloseModal = () => {
+    setShowModal(false);
+
+  };
   return (
     <main className="VStack  w-screen  items-center  ">
       <section className="VStack w-full  bg-white items-center">
@@ -25,11 +44,13 @@ export default function App() {
           </p>
           <div className="HStack gap-10 mt-7">
             <Button
+              onClick={handleButtonClick}
               radius="full"
               className="bg-black text-white pl-7 pr-7 pt-3 pb-3"
             >
               Create a project
             </Button>
+
             <Link href="/developer/documentation" className="HStack gap-1">
               <p>Documentation</p>
               <GoArrowUpRight className="text-xs" />
@@ -66,16 +87,32 @@ export default function App() {
                   <DropdownItem key="copy">Duplicate</DropdownItem>
 
                   <DropdownItem key="new">Setting</DropdownItem>
-               
                 </DropdownMenu>
               </Dropdown>
             </div>
-            <Link href="/developer/console/project" className="VStack p-4 pb-5  h-full w-full justify-end">
+            <Link
+              href="/developer/console/project"
+              className="VStack p-4 pb-5  h-full w-full justify-end"
+            >
               <p className="font-medium text-xl">Basic</p>
             </Link>
           </div>
         </div>
       </section>
+
+      {showModal && (
+        <div
+          className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center"
+          onClick={handleCloseModal}
+        >
+          <div
+            className="bg-white p-4 rounded-md text-center min-w-[400px] h-auto flex flex-col items-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <CreateProject />
+          </div>
+        </div>
+      )}
     </main>
   );
 }
