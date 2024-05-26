@@ -16,12 +16,13 @@ const CreateProject: React.FC = () => {
       console.log("User ID:", userId);
   
       // Make a POST request to create a new project
-      const response = await axios.post("http://127.0.0.1:5000/create_project", {
+      const response = await axios.post("http://127.0.0.1:5000/project/create_project", {
         title: title,
         description: description,
         user_id: userId, // Use the userId from the useToken hook
       });
-  
+      window.location.href = "/developer/console/project";
+
       // Log the response for debugging
       console.log(response.data);
   
@@ -59,7 +60,7 @@ const CreateProject: React.FC = () => {
           </Link>
           <button
             type="button"
-            className="bg-night pt-2 pb-2 pl-4 pr-4 rounded-lg text-sm text-white"
+            className="bg-nigh dark:bg-black pt-2 pb-2 pl-4 pr-4 rounded-lg text-sm text-white"
             onClick={handleCreateProject}
           >
             Create
