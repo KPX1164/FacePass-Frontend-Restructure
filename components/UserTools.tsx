@@ -21,7 +21,7 @@ type UserToolsProps = {
         {siteApp === "developer" && (
                 <Link
                 href="/developer/console"
-                className="bg-night  pt-2 pb-2 pl-4 pr-4 rounded-lg text-sm text-white"
+                className="bg-night dark:bg-black  pt-2 pb-2 pl-4 pr-4 rounded-lg text-sm text-white"
               >
                 Console
               </Link>
@@ -29,7 +29,7 @@ type UserToolsProps = {
          {siteApp === "facepass" && (
                 <Link
                 href="/control"
-                className="bg-night  pt-2 pb-2 pl-4 pr-4 rounded-lg text-sm text-white"
+                className="bg-night dark:bg-black   pt-2 pb-2 pl-4 pr-4 rounded-lg text-sm text-white"
               >
                 Control Center
               </Link>
@@ -38,7 +38,7 @@ type UserToolsProps = {
       <Dropdown>
         <DropdownTrigger>
           <div className="HStack items-center justify-center gap-2 cursor-pointer">
-            <p className="text-lg font-medium">{username}</p>
+            <p className="text-lg font-medium ">{username}</p>
             <IoChevronDownOutline className="font-bold text-lg" />
           </div>
         </DropdownTrigger>
