@@ -61,12 +61,12 @@ const ToolBars: React.FC<ToolBarsProps> = ({ siteApp = "FacePass" }) => {
   return (
     <header
       className={`w-full HStack items-center justify-between  ${
-        siteApp === "console" ? "bg-white" : ""
+        siteApp === "Console" ? "bg-white dark:bg-black" : ""
       }`}
     >
       <div className="HStack">
-        <div className="HStack min-h-[55px] gap-1 bg-white rounded-none items-center rounded-br-3xl  pl-7 pr-7 pt-1 pb-2">
-          {siteApp === "console" ? (
+        <div className="HStack min-h-[55px] gap-1 bg-white dark:bg-dark rounded-none items-center rounded-br-3xl  pl-7 pr-7 pt-1 pb-2">
+          {siteApp === "Console" ? (
             <div className="gap-1 HStack items-center ">
               <HiCubeTransparent className="text-2xl font-bold" />
               <p className="font-semibold text-2xl">
@@ -80,12 +80,14 @@ const ToolBars: React.FC<ToolBarsProps> = ({ siteApp = "FacePass" }) => {
           )}
         </div>
 
-        <div className="w-[25px] VStack bg-white h-[20px] self-start">
-          <div
-            className={`w-[30px] bg-tridary rounded-tl-full h-[20px] ${
-              siteApp === "console" ? "bg-white" : ""
-            }`}
-          ></div>
+        <div className="w-[25px] VStack dark:bg-black bg-white h-[20px] self-start">
+        <div
+  className={`w-[30px] bg-tridary dark:bg-black rounded-tl-full h-[20px] ${
+    siteApp === "Console" ? "bg-white dark:bg-black" : ""
+  } ${siteApp === "Project" ? "dark:bg-dark-secondary" : ""}${siteApp === "Developer" ? "dark:bg-dark-secondary" : ""}${siteApp === "FacePass" ? "dark:bg-dark-secondary" : ""}`
+  }
+></div>
+
         </div>
         <div className="HStack items-center justify-center">
           {renderTools(siteApp.toLowerCase())}
@@ -98,36 +100,36 @@ const ToolBars: React.FC<ToolBarsProps> = ({ siteApp = "FacePass" }) => {
           </div>
         ) : (
           <>
-          {siteApp === "developer" ? ( 
-            <div className="HStack gap-5">
-              <Link
-              href="/developer/sign-in"
-              className="bg-night pt-2 pb-2 pl-4 pr-4 rounded-lg text-sm text-white"
-            >
-              Account
-            </Link>
-        
-            </div>
-          ):(    <div className="HStack gap-5">
-          <Link
-          href="/sign-up"
-          className="bg-night pt-2 pb-2 pl-4 pr-4 rounded-lg text-sm text-white"
-        >
-          Sign Up
-        </Link>
-        <Link
-          href="/sign-in"
-          className=" border-1.5 border-night pt-2 text-black pb-2 pl-4 pr-4 rounded-lg text-sm "
-        >
-          Sign In
-        </Link>
-        </div>)}
-            
+            {siteApp === "Developer" ? (
+              <div className="HStack gap-5">
+                <Link
+                  href="/developer/sign-in"
+                  className="bg-night dark:bg-black pt-2 pb-2 pl-4 pr-4 rounded-lg text-sm text-white"
+                >
+                  Account
+                </Link>
+              </div>
+            ) : (
+              <div className="HStack gap-5">
+                <Link
+                  href="/sign-up"
+                  className="bg-night dark:bg-tridary pt-2 pb-2 pl-4 pr-4 rounded-lg text-sm text-white"
+                >
+                  Sign Up
+                </Link>
+                <Link
+                  href="/sign-in"
+                  className=" border-1.5 border-night pt-2 text-black pb-2 pl-4 pr-4 rounded-lg text-sm "
+                >
+                  Sign In
+                </Link>
+              </div>
+            )}
           </>
         )}
       </div>
 
-      {siteApp === "console" && (
+      {siteApp === "Console" && (
         <Link
           href="/developer"
           className="fixed top-0 left-0 items-center p-1 text-xs cursor-pointer hover:opacity-75 HStack gap-1"
@@ -137,7 +139,7 @@ const ToolBars: React.FC<ToolBarsProps> = ({ siteApp = "FacePass" }) => {
         </Link>
       )}
 
-      {siteApp === "project" && (
+      {siteApp === "Project" && (
         <Link
           href="/developer/console"
           className="fixed top-0 left-0 items-center p-1 text-xs cursor-pointer hover:opacity-75 HStack gap-1"
