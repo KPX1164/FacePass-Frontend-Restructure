@@ -1,3 +1,4 @@
+import { user } from '@nextui-org/react';
 import { useState, useEffect } from 'react';
 
 function useToken() {
@@ -23,7 +24,7 @@ function useToken() {
     if (typeof window !== 'undefined') {
       const tokenString = localStorage.getItem('token');
       const userToken = JSON.parse(tokenString);
-      return userToken?.id;
+      return userToken?.user.id;
     }
     return null;
   }
