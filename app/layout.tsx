@@ -57,11 +57,6 @@ export default function RootLayout({
             overflow: hidden;
           }
 
-          .content-container {
-            width: 100%;
-            height: calc(100% - 64px);
-            overflow-y: auto;
-          }
           .Outer-frame {
             border: 10px white solid;
           }
@@ -70,14 +65,22 @@ export default function RootLayout({
             border-radius: 32px;
           }
           @media (prefers-color-scheme: dark) {
+            .Outer-frame {
+              border: 10px black solid;
+            }
+            .Inner-frame {
+              border: 20px black solid;
+            }
           }
         `}</style>
       </head>
-      <body className={inter.className + "bg-tridary dark:dark Outer-frame"}>
-        <div className="background-container bg-tridary Inner-frame">
+      <body className={inter.className + "bg-tridary  dark:dark Outer-frame"}>
+        <div className="background-container bg-tridary dark:bg-dark-secondary Inner-frame">
           {/* <Navigation isDeveloper={isDeveloper} siteApp={siteApp} /> */}
-          <ToolBars siteApp={siteApp.toLowerCase()} />
-          <div className="content-container bg-tridary">{children}</div>
+          <ToolBars siteApp={siteApp} />
+          <div className=" overflow-y-auto w-[100%] h-[100%] dark:bg-dark-secondary bg-tridary">
+            {children}
+          </div>
         </div>
       </body>
     </html>

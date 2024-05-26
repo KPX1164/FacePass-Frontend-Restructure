@@ -60,6 +60,9 @@
       0.25
     ); /* Made it darker for visibility */
   }
+  .content {
+    background-color: #1c1c1e;
+  }
 }
 
 body {
@@ -187,7 +190,6 @@ body {
 
 .content {
   position:relative;
-  height:20vh;
   text-align:center;
   background-color: white;
 }
