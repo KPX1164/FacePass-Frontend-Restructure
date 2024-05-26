@@ -1,7 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Input, Button, Checkbox } from "@nextui-org/react";
 import axios from "axios";
+import { IoCheckmarkCircle, IoCloseCircle } from "react-icons/io5";
+import { Link } from "@nextui-org/react";
+
 import useToken from "@/hooks/useToken";
+import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
+import {
+  Table,
+  TableHeader,
+  TableColumn,
+  TableBody,
+  TableRow,
+  TableCell,
+} from "@nextui-org/react";
 
 type SignInFormProps = {
   isDeveloperPage?: boolean;
@@ -17,8 +29,195 @@ const SignInForm: React.FC<SignInFormProps> = ({ isDeveloperPage = false }) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [signedIn, setSignedIn] = useState(false);
 
+  type CheckedStates = {
+    sub_a: boolean;
+    sub_b: boolean;
+    sub_c: boolean;
+  };
+
+  const [checkedStates, setCheckedStates] = useState<CheckedStates>({
+    sub_a: false,
+    sub_b: false,
+    sub_c: false,
+  });
+
+  const handleCheckboxChange = (id: keyof CheckedStates) => {
+    setCheckedStates((prevCheckedStates) => ({
+      sub_a: id === "sub_a" ? !prevCheckedStates.sub_a : false,
+      sub_b: id === "sub_b" ? !prevCheckedStates.sub_b : false,
+      sub_c: id === "sub_c" ? !prevCheckedStates.sub_c : false,
+    }));
+  };
+
+  let tabs = [
+    {
+      id: "sub_a",
+      label: "Lite",
+      content: (
+        <>
+          <div className="VStack gap-5">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <Table hideHeader aria-label="Example static collection table">
+              <TableHeader>
+                <TableColumn>NAME</TableColumn>
+                <TableColumn>ROLE</TableColumn>
+              </TableHeader>
+              <TableBody>
+                <TableRow key="1">
+                  <TableCell>
+                    <IoCheckmarkCircle className="text-green-500" />
+                  </TableCell>
+                  <TableCell>Face Authentication</TableCell>
+                </TableRow>
+                <TableRow key="2">
+                  <TableCell>
+                    <IoCheckmarkCircle className="text-green-500" />
+                  </TableCell>
+                  <TableCell>Technical Support</TableCell>
+                </TableRow>
+                <TableRow key="3">
+                  <TableCell>
+                    <IoCloseCircle className="text-red-500" />
+                  </TableCell>
+                  <TableCell>Prof of Location</TableCell>
+                </TableRow>
+                <TableRow key="4">
+                  <TableCell>
+                    <IoCloseCircle className="text-red-500" />
+                  </TableCell>
+                  <TableCell>Unlimited Projects</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+            <Checkbox
+              id="lite"
+              checked={checkedStates.sub_a}
+              onChange={() => handleCheckboxChange("sub_a")}
+            >
+              I have read terms and services
+            </Checkbox>
+          </div>
+        </>
+      ),
+    },
+    {
+      id: "sub_b",
+      label: "Plus",
+      content: (
+        <>
+          <div className="VStack gap-5">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <Table hideHeader aria-label="Example static collection table">
+              <TableHeader>
+                <TableColumn>NAME</TableColumn>
+                <TableColumn>ROLE</TableColumn>
+              </TableHeader>
+              <TableBody>
+                <TableRow key="1">
+                  <TableCell>
+                    <IoCheckmarkCircle className="text-green-500" />
+                  </TableCell>
+                  <TableCell>Face Authentication</TableCell>
+                </TableRow>
+                <TableRow key="2">
+                  <TableCell>
+                    <IoCheckmarkCircle className="text-green-500" />
+                  </TableCell>
+                  <TableCell>Technical Support</TableCell>
+                </TableRow>
+                <TableRow key="3">
+                  <TableCell>
+                    <IoCheckmarkCircle className="text-green-500" />
+                  </TableCell>
+                  <TableCell>Proof of Location</TableCell>
+                </TableRow>
+                <TableRow key="4">
+                  <TableCell>
+                    <IoCloseCircle className="text-red-500" />
+                  </TableCell>
+                  <TableCell>Unlimited Projects</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+            <Checkbox
+              id="plus"
+              checked={checkedStates.sub_b}
+              onChange={() => handleCheckboxChange("sub_b")}
+            >
+              I have read terms and services
+            </Checkbox>
+          </div>
+        </>
+      ),
+    },
+    {
+      id: "sub_c",
+      label: "Pro",
+      content: (
+        <>
+          <div className="VStack gap-5">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <Table hideHeader aria-label="Example static collection table">
+              <TableHeader>
+                <TableColumn>NAME</TableColumn>
+                <TableColumn>ROLE</TableColumn>
+              </TableHeader>
+              <TableBody>
+                <TableRow key="1">
+                  <TableCell>
+                    <IoCheckmarkCircle className="text-green-500" />
+                  </TableCell>
+                  <TableCell>Face Authentication</TableCell>
+                </TableRow>
+                <TableRow key="2">
+                  <TableCell>
+                    <IoCheckmarkCircle className="text-green-500" />
+                  </TableCell>
+                  <TableCell>Technical Support</TableCell>
+                </TableRow>
+                <TableRow key="3">
+                  <TableCell>
+                    <IoCheckmarkCircle className="text-green-500" />
+                  </TableCell>
+                  <TableCell>Proof of Location</TableCell>
+                </TableRow>
+                <TableRow key="4">
+                  <TableCell>
+                    <IoCheckmarkCircle className="text-green-500" />
+                  </TableCell>
+                  <TableCell>Unlimited Projects</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+            <Checkbox
+              id="pro"
+              checked={checkedStates.sub_c}
+              onChange={() => handleCheckboxChange("sub_c")}
+            >
+              I have read terms and services
+            </Checkbox>
+          </div>
+        </>
+      ),
+    },
+  ];
+
   useEffect(() => {
-    // Redirect if user is already a developer
     if (signedIn && role !== "user") {
       window.location.href = "/developer";
     }
@@ -65,27 +264,33 @@ const SignInForm: React.FC<SignInFormProps> = ({ isDeveloperPage = false }) => {
     }
   };
 
-  const handleCheckboxChange = () => {
-    setChecked(!checked);
-  };
-
   const handleSignInAsDeveloper = async () => {
-    if (checked) {
+    if (checkedStates.sub_a || checkedStates.sub_b || checkedStates.sub_c) {
       try {
-        const response = await axios.post(
-          "http://127.0.0.1:5000/auth/update_role",
-          {
+        if (checkedStates.sub_a) {
+          await axios.post("http://127.0.0.1:5000/auth/upgrade_dev_lite", {
             email,
-            role: "dev",
-          }
-        );
-        console.log("Role updated to 'dev'", response.data);
+          });
+          console.log("Role upgraded to 'dev_lite'");
+        } else if (checkedStates.sub_b) {
+          await axios.post("http://127.0.0.1:5000/auth/upgrade_dev_plus", {
+            email,
+          });
+          console.log("Role upgraded to 'dev_plus'");
+        } else if (checkedStates.sub_c) {
+          await axios.post("http://127.0.0.1:5000/auth/upgrade_dev_pro", {
+            email,
+          });
+          console.log("Role upgraded to 'dev_pro'");
+        }
         window.location.href = "/developer/workspace/project";
       } catch (error) {
         console.error("Error updating role:", error);
       }
     } else {
-      alert("Please check the checkbox to sign in as a developer.");
+      alert(
+        "Please check at least one of the checkboxes to sign in as a developer."
+      );
     }
   };
 
@@ -115,7 +320,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ isDeveloperPage = false }) => {
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
-    setErrorMessage(""); // Clear error message on email change
+    setErrorMessage("");
   };
 
   return (
@@ -145,16 +350,34 @@ const SignInForm: React.FC<SignInFormProps> = ({ isDeveloperPage = false }) => {
           <Button color="primary" type="submit">
             {emailEntered ? "Sign In" : "Continue"}
           </Button>
+          <div className="w-full VStack items-center ">
+            <Link className=" underline" href="/sign-up">
+              Create account now
+            </Link>
+          </div>
         </form>
       ) : (
-        role === "user" && isDeveloperPage && (
+        role === "user" &&
+        isDeveloperPage && (
           <>
-            <Checkbox checked={checked} onChange={handleCheckboxChange}>
-              I have read terms and services
-            </Checkbox>
-            <Button color="primary" onClick={handleSignInAsDeveloper}>
-              Sign In as Developer
-            </Button>
+            <div className="VStack w-9/12 items-center">
+              <Tabs aria-label="Dynamic tabs" items={tabs}>
+                {(item) => (
+                  <Tab key={item.id} title={item.label}>
+                    <Card>
+                      <CardBody>{item.content}</CardBody>
+                    </Card>
+                  </Tab>
+                )}
+              </Tabs>
+              <Button
+                color="primary"
+                className="w-fit"
+                onClick={handleSignInAsDeveloper}
+              >
+                Sign In as Developer
+              </Button>
+            </div>
           </>
         )
       )}
