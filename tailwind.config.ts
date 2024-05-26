@@ -18,10 +18,11 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       backgroundColor: {
-        secondary: "#f7f7f7",
+        "secondary": "#f7f7f7",
         "dark-secondary": "#1c1c1e",
-        tridary: "#EDEDED",
-        night: "#0D1929",
+        "tridary": "#EDEDED",
+        "dark":"#000",
+        "night": "#0D1929",
       },
 
       borderColor: { night: "#0D1929" },
