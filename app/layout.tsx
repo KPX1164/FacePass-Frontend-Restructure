@@ -11,6 +11,7 @@ type PathMap = {
   "": string;
   developer: string;
   control: string;
+  setting: string;
   "developer/console": string;
   "developer/console/project": string;
 };
@@ -31,6 +32,7 @@ export default function RootLayout({
         "": "FacePass",
         developer: "Developer",
         control: "Control Center",
+        setting: "Settings",
         "developer/console": "Console",
         "developer/console/project": "Project",
       };

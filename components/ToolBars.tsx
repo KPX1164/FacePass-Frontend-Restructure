@@ -9,6 +9,7 @@ import Link from "next/link";
 import { GoChevronLeft } from "react-icons/go";
 import useToken from "@/hooks/useToken";
 import UserTools from "./UserTools";
+
 type ToolBarsProps = {
   siteApp?: string;
 };
@@ -62,13 +63,23 @@ const ToolBars: React.FC<ToolBarsProps> = ({ siteApp = "FacePass" }) => {
     <header
       className={`w-full HStack items-center justify-between  ${
         siteApp === "Console" ? "bg-white dark:bg-black" : ""
+      }
+      ${
+        siteApp === "Settings" ? "bg-white dark:bg-black" : ""
       }`}
     >
       <div className="HStack">
         <div className="HStack min-h-[55px] gap-1 bg-white dark:bg-dark rounded-none items-center rounded-br-3xl  pl-7 pr-7 pt-1 pb-2">
           {siteApp === "Console" ? (
-            <div className="gap-1 HStack items-center ">
+            <div className="gap-1 HStack items-center">
               <HiCubeTransparent className="text-2xl font-bold" />
+              <p className="font-semibold text-2xl">
+                {siteApp.charAt(0).toUpperCase() + siteApp.slice(1)}
+              </p>
+            </div>
+          ) : siteApp === "Settings" ? (
+            <div className="gap-1 HStack items-center">
+              <GoChevronLeft className="text-2xl font-bold" />
               <p className="font-semibold text-2xl">
                 {siteApp.charAt(0).toUpperCase() + siteApp.slice(1)}
               </p>
@@ -81,13 +92,14 @@ const ToolBars: React.FC<ToolBarsProps> = ({ siteApp = "FacePass" }) => {
         </div>
 
         <div className="w-[25px] VStack dark:bg-black bg-white h-[20px] self-start">
-        <div
-  className={`w-[30px] bg-tridary dark:bg-black rounded-tl-full h-[20px] ${
-    siteApp === "Console" ? "bg-white dark:bg-black" : ""
-  } ${siteApp === "Project" ? "dark:bg-dark-secondary" : ""}${siteApp === "Developer" ? "dark:bg-dark-secondary" : ""}${siteApp === "FacePass" ? "dark:bg-dark-secondary" : ""}`
-  }
-></div>
-
+          <div
+            className={`w-[30px] bg-tridary dark:bg-black rounded-tl-full h-[20px] ${
+              siteApp === "Console" ? "bg-white dark:bg-black" : ""
+            } ${siteApp === "Project" ? "dark:bg-dark-secondary" : ""}${
+              siteApp === "Developer" ? "dark:bg-dark-secondary" : ""
+            }${siteApp === "FacePass" ? "dark:bg-dark-secondary" : ""}
+            ${siteApp === "Settings" ? "dark:bg-black" : ""}`}
+          ></div>
         </div>
         <div className="HStack items-center justify-center">
           {renderTools(siteApp.toLowerCase())}

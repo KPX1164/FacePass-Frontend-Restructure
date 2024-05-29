@@ -8,14 +8,25 @@ import {
 } from "@nextui-org/react";
 import { SlOptionsVertical } from "react-icons/sl";
 import Link from "next/link";
+import useToken from "@/hooks/useToken";
+
+type Project = {
+  id: string;
+  title: string;
+  // Add any other properties your project object has
+};
 
 const Projects = () => {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const { userId } = useToken();
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:5000/project/get_all_project");
+        console.log(userId);
+        const response = await axios.get(
+          `http://127.0.0.1:5000/project/get_dev_project?created_user_id=${userId}`
+        );
         setProjects(response.data.projects);
       } catch (error) {
         console.error("Error fetching projects:", error);
@@ -23,7 +34,7 @@ const Projects = () => {
     };
 
     fetchProjects();
-  }, []);
+  }, [userId]);
 
   return (
     <>
@@ -57,11 +68,10 @@ const Projects = () => {
               </DropdownMenu>
             </Dropdown>
           </div>
-          <Link
-            href={`/developer/console/project/${project.id}`}
-            className="VStack p-4 pb-5 h-full w-full justify-end"
-          >
-            <p className="font-medium text-xl">{project.title}</p>
+          <Link href={`/developer/console/project/${project.id}`}>
+            <div className="VStack p-4 pb-5 h-full w-full justify-end">
+              <p className="font-medium text-xl">{project.title}</p>
+            </div>
           </Link>
         </div>
       ))}

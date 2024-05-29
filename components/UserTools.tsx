@@ -18,7 +18,7 @@ type UserToolsProps = {
 
   return (
     <div className="HStack gap-10">
-        {siteApp === "developer" && (
+        {siteApp === "Developer" && (
                 <Link
                 href="/developer/console"
                 className="bg-night dark:bg-black  pt-2 pb-2 pl-4 pr-4 rounded-lg text-sm text-white"
@@ -26,7 +26,7 @@ type UserToolsProps = {
                 Console
               </Link>
         )}
-         {siteApp === "facepass" && (
+         {siteApp === "FacePass" && (
                 <Link
                 href="/control"
                 className="bg-night dark:bg-black   pt-2 pb-2 pl-4 pr-4 rounded-lg text-sm text-white"
@@ -49,7 +49,7 @@ type UserToolsProps = {
           <DropdownItem key="profile" showDivider>
             Profile
           </DropdownItem>
-          <DropdownItem key="setting" showDivider>
+          <DropdownItem key="setting" href="/setting" showDivider>
             Setting
           </DropdownItem>
           <DropdownItem className="text-danger" color="danger" onClick={logout}>
