@@ -10,47 +10,49 @@ import { GoChevronLeft } from "react-icons/go";
 import useToken from "@/hooks/useToken";
 import UserTools from "./UserTools";
 
-type ToolBarsProps = {
-  siteApp?: string;
-};
-
-const ToolBars: React.FC<ToolBarsProps> = ({ siteApp = "FacePass" }) => {
+const ToolBars: React.FC = () => {
   const [activePage, setActivePage] = useState("/");
   const { isLoggedIn } = useToken();
+  const [siteApp, setSiteApp] = useState("FacePass");
 
   useEffect(() => {
     const handleRouteChange = () => {
-      setActivePage(window.location.pathname);
+      const pathname = window.location.pathname;
+      setActivePage(pathname);
+
+      const determineSiteApp = (path: string) => {
+        if (path.startsWith("/developer/console/project")) return "Project";
+        if (path.startsWith("/developer/console")) return "Console";
+        if (path.startsWith("/developer")) return "Developer";
+        if (path.startsWith("/control")) return "Control Center";
+        if (path.startsWith("/setting")) return "Settings";
+        return "FacePass";
+      };
+
+      setSiteApp(determineSiteApp(pathname));
     };
 
-    // Update activePage on component mount
-    setActivePage(window.location.pathname);
+    handleRouteChange();
 
-    // Update activePage when route changes
     window.addEventListener("popstate", handleRouteChange);
 
-    // Clean up event listener
     return () => {
       window.removeEventListener("popstate", handleRouteChange);
     };
   }, []);
 
-  //   useEffect(() => {
-  //     setActivePage(window.location.pathname);
-  //   }, []);
-
   const renderTools = (key: string) => {
     switch (key) {
-      case "developer":
+      case "Developer":
         return (
           <DeveloperTools
             activePage={activePage}
             setActivePage={setActivePage}
           />
         );
-      case "console":
+      case "Console":
         return <ConsoleTools />;
-      case "project":
+      case "Project":
         return <ProjectTools />;
       default:
         return (
@@ -61,25 +63,21 @@ const ToolBars: React.FC<ToolBarsProps> = ({ siteApp = "FacePass" }) => {
 
   return (
     <header
-      className={`w-full HStack items-center justify-between  ${
-        siteApp === "Console" ? "bg-white dark:bg-black" : ""
-      }
-      ${
-        siteApp === "Settings" ? "bg-white dark:bg-black" : ""
+      className={`w-full HStack items-center justify-between ${
+        siteApp === "Console" || siteApp === "Settings"
+          ? "bg-white dark:bg-black"
+          : ""
       }`}
     >
       <div className="HStack">
-        <div className="HStack min-h-[55px] gap-1 bg-white dark:bg-dark rounded-none items-center rounded-br-3xl  pl-7 pr-7 pt-1 pb-2">
-          {siteApp === "Console" ? (
+        <div className="HStack min-h-[55px] gap-1 bg-white dark:bg-dark rounded-none items-center rounded-br-3xl pl-7 pr-7 pt-1 pb-2">
+          {siteApp === "Console" || siteApp === "Settings" ? (
             <div className="gap-1 HStack items-center">
-              <HiCubeTransparent className="text-2xl font-bold" />
-              <p className="font-semibold text-2xl">
-                {siteApp.charAt(0).toUpperCase() + siteApp.slice(1)}
-              </p>
-            </div>
-          ) : siteApp === "Settings" ? (
-            <div className="gap-1 HStack items-center">
-              <GoChevronLeft className="text-2xl font-bold" />
+              {siteApp === "Console" ? (
+                <HiCubeTransparent className="text-2xl font-bold" />
+              ) : (
+                <GoChevronLeft className="text-2xl font-bold" />
+              )}
               <p className="font-semibold text-2xl">
                 {siteApp.charAt(0).toUpperCase() + siteApp.slice(1)}
               </p>
@@ -93,16 +91,15 @@ const ToolBars: React.FC<ToolBarsProps> = ({ siteApp = "FacePass" }) => {
 
         <div className="w-[25px] VStack dark:bg-black bg-white h-[20px] self-start">
           <div
-            className={`w-[30px] bg-tridary dark:bg-black rounded-tl-full h-[20px] ${
-              siteApp === "Console" ? "bg-white dark:bg-black" : ""
-            } ${siteApp === "Project" ? "dark:bg-dark-secondary" : ""}${
-              siteApp === "Developer" ? "dark:bg-dark-secondary" : ""
-            }${siteApp === "FacePass" ? "dark:bg-dark-secondary" : ""}
-            ${siteApp === "Settings" ? "dark:bg-black" : ""}`}
+            className={`w-[30px] bg-tridary dark:bg-dark-secondary rounded-tl-full h-[20px] ${
+              siteApp === "Console" || siteApp === "Settings"
+                ? "bg-white dark:bg-black"
+                : ""
+            }`}
           ></div>
         </div>
         <div className="HStack items-center justify-center">
-          {renderTools(siteApp.toLowerCase())}
+          {renderTools(siteApp)}
         </div>
       </div>
       <div className="HStack gap-5 pt-[0.5rem] pr-5">
@@ -125,13 +122,13 @@ const ToolBars: React.FC<ToolBarsProps> = ({ siteApp = "FacePass" }) => {
               <div className="HStack gap-5">
                 <Link
                   href="/sign-up"
-                  className="bg-night dark:bg-tridary pt-2 pb-2 pl-4 pr-4 rounded-lg text-sm text-white"
+                  className="dark:bg-black bg-tridary pt-2 pb-2 pl-4 pr-4 rounded-lg text-sm text-white"
                 >
                   Sign Up
                 </Link>
                 <Link
                   href="/sign-in"
-                  className=" border-1.5 border-night pt-2 text-black pb-2 pl-4 pr-4 rounded-lg text-sm "
+                  className="border-1.5 dark:text-white dark:border-tridary border-night pt-2 text-black pb-2 pl-4 pr-4 rounded-lg text-sm"
                 >
                   Sign In
                 </Link>

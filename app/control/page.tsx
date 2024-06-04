@@ -3,7 +3,6 @@ import React from "react";
 import { Input } from "@nextui-org/react";
 import { DatePicker } from "@nextui-org/react";
 import { Select, SelectItem } from "@nextui-org/react";
-import FacePass from "@/components/public/FacePass/FacePass";
 import { TiThSmall } from "react-icons/ti";
 import { FaGear } from "react-icons/fa6";
 import { IoChevronBack } from "react-icons/io5";

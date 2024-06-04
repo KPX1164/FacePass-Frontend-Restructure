@@ -107,7 +107,6 @@ function useToken() {
 
   const saveToken = (userToken) => {
     localStorage.setItem('token', JSON.stringify(userToken));
-    setUserId(userToken.user.id);
     setToken(userToken.token);
     setUsername(`${userToken.user.first_name} ${userToken.user.last_name}`);
     setFirstName(userToken.user.first_name);
@@ -116,6 +115,7 @@ function useToken() {
     setPhoneNumber(userToken.user.phone_number);
     setGender(userToken.user.gender);
     setDateOfBirth(userToken.user.date_of_birth);
+    setUserId(userToken.user.id);
     setRole(userToken.user.role);
   };
 
@@ -133,6 +133,27 @@ function useToken() {
     setRole(null);
   };
 
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setToken(getToken());
+      setUsername(getFullName());
+      setFirstName(getFirstName());
+      setLastName(getLastName());
+      setEmail(getEmail());
+      setPhoneNumber(getPhoneNumber());
+      setGender(getGender());
+      setDateOfBirth(getDateOfBirth());
+      setUserId(getID());
+      setRole(getRole());
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
+
   return {
     setToken: saveToken,
     token,
@@ -146,7 +167,7 @@ function useToken() {
     gender,
     dateOfBirth,
     userId,
-    role
+    role,
   };
 }
 

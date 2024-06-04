@@ -25,7 +25,8 @@ const config: Config = {
         "night": "#0D1929",
       },
 
-      borderColor: { night: "#0D1929" },
+      borderColor: { night: "#0D1929",        "tridary": "#EDEDED",
+    },
     },
   },
   plugins: [nextui()],

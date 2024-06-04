@@ -11,8 +11,7 @@ export default function Sound() {
 
   return (
     <div>
-      <h1>Dashboard</h1>
-      <Button onClick={navigateToCustomers}>Go to Customers</Button>
+      <h1>Sound</h1>
     </div>
   );
 }

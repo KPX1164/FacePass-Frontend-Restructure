@@ -11,8 +11,7 @@ export default function Privacy() {
 
   return (
     <div>
-      <h1>Dashboard</h1>
-      <Button onClick={navigateToCustomers}>Go to Customers</Button>
+      <h1>Privacy</h1>
     </div>
   );
 }

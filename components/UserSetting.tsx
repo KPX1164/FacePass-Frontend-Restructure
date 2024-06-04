@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Input, Button } from "@nextui-org/react";
 import { GoChevronRight } from "react-icons/go";
 import { LuLink } from "react-icons/lu";
@@ -19,30 +19,34 @@ const UserSetting = () => {
   const [showFirstNameInput, setShowFirstNameInput] = useState(false);
   const [editedFirstName, setEditedFirstName] = useState(firstName);
 
-  // State for last name
   const [showLastNameInput, setShowLastNameInput] = useState(false);
   const [editedLastName, setEditedLastName] = useState(lastName);
 
-  // State for date of birth
   const [showDOBInput, setShowDOBInput] = useState(false);
   const [editedDOB, setEditedDOB] = useState(dateOfBirth);
 
-  // State for gender
   const [showGenderInput, setShowGenderInput] = useState(false);
   const [editedGender, setEditedGender] = useState(gender);
 
-  // State for phone number
   const [showPhoneInput, setShowPhoneInput] = useState(false);
   const [editedPhone, setEditedPhone] = useState(phoneNumber);
 
-  // State for email
   const [showEmailInput, setShowEmailInput] = useState(false);
   const [editedEmail, setEditedEmail] = useState(email);
 
-
   const [isEditing, setIsEditing] = useState(false);
 
-  const handleFirstNameClick = (e:any) => {
+  useEffect(() => {
+    // Sync the state with the initial values from useToken on mount
+    setEditedFirstName(firstName);
+    setEditedLastName(lastName);
+    setEditedDOB(dateOfBirth);
+    setEditedGender(gender);
+    setEditedPhone(phoneNumber);
+    setEditedEmail(email);
+  }, [firstName, lastName, dateOfBirth, gender, phoneNumber, email]);
+
+  const handleFirstNameClick = (e: any) => {
     if (!e.target.matches("input")) {
       setShowFirstNameInput(!showFirstNameInput);
       setIsEditing(!showFirstNameInput || editedFirstName !== firstName);
@@ -55,13 +59,11 @@ const UserSetting = () => {
   };
 
   const handleLastNameChange = (e: any) => {
-    setEditedFirstName(e.target.value);
+    setEditedLastName(e.target.value);
     setIsEditing(e.target.value !== lastName);
   };
 
   const updateUser = async () => {
-    console.log(email + editedFirstName);
-    
     try {
       const response = await fetch('http://127.0.0.1:5000/user/update_user', {
         method: 'POST',
@@ -79,6 +81,7 @@ const UserSetting = () => {
 
       if (response.ok) {
         console.log('User updated successfully!', data);
+        window.location.reload();
       } else {
         console.error('Error updating user:', data.message);
       }
@@ -96,12 +99,8 @@ const UserSetting = () => {
           alt="User Avatar"
         />
         <p className="text-lg font-medium">{username}</p>
-        {role === "user" && (
-          <p className="text-base opacity-75">FacePass Account</p>
-        )}
-        {role === "developer" && (
-          <p className="text-base opacity-75">Developer Account</p>
-        )}
+        {role === "user" && <p className="text-base opacity-75">FacePass Account</p>}
+        {role === "developer" && <p className="text-base opacity-75">Developer Account</p>}
       </div>
 
       <section id="Toolbar" className="VStack w-8/12 justify-between pl-2 pr-2">
@@ -132,14 +131,14 @@ const UserSetting = () => {
               <li className="HStack w-full justify-between cursor-pointer rounded-lg pl-5 pr-5 pb-3 pt-3">
                 <div className="HStack w-full justify-between items-center">
                   <p>Last Name</p>
-                   <div className="gap-1 HStack opacity-75">
-              {showLastNameInput ? (
-                <Input type="text" value={editedLastName} onChange={handleLastNameChange} />
-              ) : (
-                <p>{lastName}</p>
-              )}
-              <GoChevronRight className="font-normal text-base" />
-            </div>
+                  <div className="gap-1 HStack opacity-75">
+                    {showLastNameInput ? (
+                      <Input type="text" value={editedLastName} onChange={handleLastNameChange} />
+                    ) : (
+                      <p>{lastName}</p>
+                    )}
+                    <GoChevronRight className="font-normal text-base" />
+                  </div>
                 </div>
               </li>
             </ul>
